@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>apps by sskplay</title>
+    <meta name="description" content="Apps and tools by sskplay." />
+    <meta property="og:title" content="apps by sskplay" />
+    <meta property="og:description" content="Apps and tools by sskplay." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://apps.sskplay.com/" />
+    <link rel="icon" href="airplay-touch/assets/icon-512.png" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fafafa;
+        --fg: #111;
+        --muted: #6b6b6b;
+        --line: #e5e5e5;
+        --card: #fff;
+        --accent: #0a84ff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0b0c;
+          --fg: #f3f3f3;
+          --muted: #9a9a9f;
+          --line: #232326;
+          --card: #141416;
+          --accent: #4ea1ff;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; text-decoration: none; }
+
+      .container { max-width: 920px; margin: 0 auto; padding: 0 1.25rem; }
+
+      header.site {
+        padding: 4rem 0 2rem;
+      }
+      header.site h1 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        margin: 0 0 .35rem;
+        letter-spacing: -.02em;
+      }
+      header.site p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      main { padding-bottom: 4rem; }
+
+      section.cat {
+        padding-top: 2rem;
+      }
+      section.cat h2 {
+        font-size: 1rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 1rem;
+        font-weight: 600;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        padding: 1rem 1.1rem;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--card);
+        transition: transform .15s ease, border-color .15s ease;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
+      }
+      .card img.icon {
+        width: 56px; height: 56px;
+        border-radius: 13px;
+        flex-shrink: 0;
+        background: var(--card);
+      }
+      .card img.icon.pixel { image-rendering: pixelated; }
+      .card .meta { min-width: 0; }
+      .card h3 {
+        margin: 0 0 .15rem;
+        font-size: 1.05rem;
+        letter-spacing: -.005em;
+        font-weight: 600;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: .9rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      footer.site {
+        margin-top: 2rem;
+        padding: 2rem 0 3rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: .9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="container">
+        <h1>apps by sskplay</h1>
+        <p>Small things I make.</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="cat">
+        <h2>Apps</h2>
+        <div class="grid">
+          <a class="card" href="/adssk/">
+            <img class="icon" src="adssk/assets/icon-512.png" alt="adssk icon" width="56" height="56" />
+            <div class="meta">
+              <h3>AdSsk</h3>
+              <p>An eCPM-waterfall ad mediation library for Android — AdMob, AppLovin, Unity, Meta, ironSource, Pangle and offerwalls through one API. Example app.</p>
+            </div>
+          </a>
+          <a class="card" href="/weather-alarm/">
+            <img class="icon" src="weather-alarm/assets/icon-512.png" alt="날씨 알람 icon" width="56" height="56" />
+            <div class="meta">
+              <h3>날씨 알람</h3>
+              <p>알람시계인데 깨우면서 오늘 날씨를 음성과 풀스크린으로 브리핑한다. 기상청 데이터 기반, 오늘+주간 위젯.</p>
+            </div>
+          </a>
+          <a class="card" href="/monogame-studio/">
+            <img class="icon" src="monogame-studio/assets/icon-512.png" alt="Monogame Studio icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Monogame Studio</h3>
+              <p>Make tiny games on your phone. Describe an idea, Code Buddy writes the Lua, play it instantly.</p>
+            </div>
+          </a>
+          <a class="card" href="/airplay-touch/">
+            <img class="icon" src="airplay-touch/assets/icon-512.png" alt="AirPlay Touch icon" width="56" height="56" />
+            <div class="meta">
+              <h3>AirPlay Touch</h3>
+              <p>An AirPlay receiver where the mirrored screen is touch-interactive.</p>
+            </div>
+          </a>
+          <a class="card" href="/audiocast/">
+            <img class="icon" src="audiocast/assets/icon-512.png" alt="AudioCast icon" width="56" height="56" />
+            <div class="meta">
+              <h3>AudioCast</h3>
+              <p>Stream your Mac or Windows audio to your Android phone over Wi-Fi. No cables, low latency.</p>
+            </div>
+          </a>
+          <a class="card" href="/app-pin/">
+            <img class="icon" src="app-pin/assets/icon-512.png" alt="App Pin icon" width="56" height="56" />
+            <div class="meta">
+              <h3>App Pin</h3>
+              <p>Pin apps to your home screen. Shortcuts stay forever — even after uninstall.</p>
+            </div>
+          </a>
+          <a class="card" href="/coupox/">
+            <img class="icon" src="coupox/assets/icon-512.png" alt="Coupox icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Coupox</h3>
+              <p>Keep every coupon and gifticon in one place. Stop digging through chat threads at the register.</p>
+            </div>
+          </a>
+          <a class="card" href="/harudama/">
+            <img class="icon" src="harudama/assets/icon-512.png" alt="Harudama icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Harudama</h3>
+              <p>An AI diary that replies. Record your day, see your emotions on a calendar.</p>
+            </div>
+          </a>
+          <a class="card" href="/jailphone/">
+            <img class="icon" src="jailphone/assets/icon-512.png" alt="Jail Phone icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Jail Phone</h3>
+              <p>A digital detox launcher. Block distracting apps, lock the settings, reclaim your time.</p>
+            </div>
+          </a>
+          <a class="card" href="/kidssms/">
+            <img class="icon" src="kidssms/assets/icon-512.png" alt="Kids SMS icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Kids SMS</h3>
+              <p>Link-blocking SMS for a kid's first phone. Pure text, no escape into the browser.</p>
+            </div>
+          </a>
+          <a class="card" href="/hhkb-moim/">
+            <img class="icon" src="hhkb-moim/assets/icon-512.png" alt="HHKB Moim icon" width="56" height="56" />
+            <div class="meta">
+              <h3>HHKB Moim</h3>
+              <p>Happy Hacking Keyboard intro guide and small community for Korean HHKB users.</p>
+            </div>
+          </a>
+          <a class="card" href="https://hanamlib.moim.one" target="_blank" rel="noopener">
+            <img class="icon" src="hanam-lib/assets/icon-512.png" alt="Hanam Library Moim icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Hanam Library Moim</h3>
+              <p>A friendlier frontend for the Hanam city library. Search that sticks, push alerts when a hold slot opens, family card switching.</p>
+            </div>
+          </a>
+          <a class="card" href="/qbell/">
+            <img class="icon" src="qbell/assets/icon-512.png" alt="QBell icon" width="56" height="56" />
+            <div class="meta">
+              <h3>QBell</h3>
+              <p>A service bell that customers ring with a QR code. Print, stick, scan — your phone rings.</p>
+            </div>
+          </a>
+          <a class="card" href="/magnifier/">
+            <img class="icon" src="magnifier/assets/icon-512.png" alt="Magnifier icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Magnifier</h3>
+              <p>Turn your phone into a quick magnifying glass. Open, point, read.</p>
+            </div>
+          </a>
+          <a class="card" href="/teamplay/">
+            <img class="icon" src="teamplay/assets/icon-512.png" alt="Team Play icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Team Play</h3>
+              <p>Fair team picker for pickup games. Drop in players, hit shuffle, get balanced sides.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="cat">
+        <h2>Games</h2>
+        <div class="grid">
+          <a class="card" href="/battleship/">
+            <img class="icon" src="battleship/assets/icon-512.png" alt="Fastest Battleship icon" width="56" height="56" style="background:#000;" />
+            <div class="meta">
+              <h3>Fastest Battleship</h3>
+              <p>Free realtime multiplayer naval battles. Quick rooms, no signup, plays in any browser.</p>
+            </div>
+          </a>
+          <a class="card" href="/fireworks/">
+            <img class="icon pixel" src="fireworks/assets/icon-512.png" alt="Mono Fireworks icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Fireworks</h3>
+              <p>Touch the night sky. 1990 style pixel fireworks across 12 landscapes.</p>
+            </div>
+          </a>
+          <a class="card" href="/pong/">
+            <img class="icon pixel" src="pong/assets/icon-512.png" alt="Mono Pong icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Pong</h3>
+              <p>Retro pong with 5 stages, sparking obstacles, and an AI-vs-AI watch mode.</p>
+            </div>
+          </a>
+          <a class="card" href="/hangman/">
+            <img class="icon pixel" src="hangman/assets/icon-512.png" alt="Mono Hangman icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Hangman</h3>
+              <p>Classic hangman in a 1-bit handheld. Layered clues, hint economy, HI SCORE chase.</p>
+            </div>
+          </a>
+          <a class="card" href="/potato/">
+            <img class="icon pixel" src="potato/assets/icon-512.png" alt="Mono Potato Volleyball icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Potato Volleyball</h3>
+              <p>Two potatoes, one ball, one net. Land it on the nose for a triple-speed spike.</p>
+            </div>
+          </a>
+          <a class="card" href="/missile-defense/">
+            <img class="icon pixel" src="missile-defense/assets/icon-512.png" alt="Mono Missile Defense icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Missile Defense</h3>
+              <p>Defend your cities. Intercept the missiles. Survive all 30 waves.</p>
+            </div>
+          </a>
+          <a class="card" href="/scorch/">
+            <img class="icon pixel" src="scorch/assets/icon-512.png" alt="Mono Scorch icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Scorch</h3>
+              <p>Turn-based artillery duel. Aim, charge, fire — but watch the wind.</p>
+            </div>
+          </a>
+          <a class="card" href="/snake/">
+            <img class="icon pixel" src="snake/assets/icon-512.png" alt="Mono Snake icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Snake</h3>
+              <p>Classic snake with 5 stages, 3 difficulties, and an AI-vs-AI watch mode.</p>
+            </div>
+          </a>
+          <a class="card" href="/monoban/">
+            <img class="icon pixel" src="monoban/assets/icon-512.png" alt="Monoban icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Monoban</h3>
+              <p>Sokoban with a contemplative AI watch mode that turns the screen into a clock.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site">
+      <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;">
+        <span>© sskplay</span>
+        <span><a href="https://feedback.sskplay.com/" target="_blank" rel="noopener">Feedback</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a></span>
+      </div>
+    </footer>
+
+    <!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+    <script
+      data-goatcounter="https://sskplay.goatcounter.com/count"
+      async src="//gc.zgo.at/count.js"></script>
+    <script>
+      // Record which app card was clicked as a GoatCounter event.
+      window.addEventListener('load', function () {
+        document.querySelectorAll('a.card').forEach(function (a) {
+          a.addEventListener('click', function () {
+            var href = a.getAttribute('href') || '';
+            var slug = href.replace(/^https?:\/\//, '').replace(/\/+$/, '').split('/').pop() || 'home';
+            var h3 = a.querySelector('h3');
+            if (window.goatcounter && window.goatcounter.count) {
+              window.goatcounter.count({
+                path: 'click-' + slug,
+                title: h3 ? h3.textContent.trim() : slug,
+                event: true
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
