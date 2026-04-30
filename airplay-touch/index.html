@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AirPlay Touch — turn Android into an AirPlay receiver and Mac touch panel</title>
+    <meta name="description" content="AirPlay Touch turns your Android phone or tablet into a wireless AirPlay receiver, and into a touch input panel for your Mac." />
+    <meta property="og:title" content="AirPlay Touch" />
+    <meta property="og:description" content="Turn Android into an AirPlay receiver and a touch panel for your Mac." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://apps.sskplay.com/airplay-touch/" />
+    <meta property="og:image" content="https://apps.sskplay.com/airplay-touch/assets/feature.webp" />
+    <link rel="icon" href="assets/icon-512.png" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fafafa;
+        --fg: #111;
+        --muted: #6b6b6b;
+        --line: #e5e5e5;
+        --card: #fff;
+        --accent: #0a84ff;
+        --code-bg: #f4f4f5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0b0c;
+          --fg: #f3f3f3;
+          --muted: #9a9a9f;
+          --line: #232326;
+          --card: #141416;
+          --accent: #4ea1ff;
+          --code-bg: #1a1a1d;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .container { max-width: 920px; margin: 0 auto; padding: 0 1.25rem; }
+
+      header.site {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      header.site nav a { color: var(--muted); font-size: .9rem; }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 1.25rem;
+        align-items: center;
+        padding: 3rem 0 2rem;
+      }
+      .hero img.icon {
+        width: 96px; height: 96px;
+        border-radius: 22px;
+        box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      }
+      .hero h1 {
+        margin: 0 0 .25rem;
+        font-size: clamp(1.6rem, 4vw, 2.25rem);
+        letter-spacing: -.01em;
+      }
+      .hero p.tagline {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .75rem;
+        margin: 1.25rem 0 3rem;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        padding: .65rem 1.1rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: .95rem;
+        border: 1px solid var(--line);
+        background: var(--card);
+        color: var(--fg);
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: white;
+        border-color: transparent;
+      }
+      .btn.primary:hover { text-decoration: none; opacity: .92; }
+
+      section { padding: 2rem 0; border-top: 1px solid var(--line); }
+      section h2 {
+        font-size: 1.1rem;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 1rem;
+      }
+      section h3 {
+        font-size: 1.05rem;
+        margin: 0 0 .25rem;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+      .feature {
+        padding: 1rem 1.1rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+      }
+      .feature p { margin: .25rem 0 0; color: var(--muted); font-size: .95rem; }
+
+      .shots {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+      }
+      .shots img {
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: var(--card);
+        display: block;
+      }
+
+      .install-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      @media (min-width: 720px) {
+        .install-grid { grid-template-columns: 1fr 1fr; }
+      }
+      .install-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+        padding: 1.25rem;
+      }
+      .install-card h3 { margin-bottom: .5rem; }
+      .install-card ol { padding-left: 1.1rem; margin: .5rem 0 0; color: var(--muted); }
+
+      pre, code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: .9rem;
+      }
+      pre {
+        background: var(--code-bg);
+        padding: .85rem 1rem;
+        border-radius: 10px;
+        overflow-x: auto;
+        margin: .75rem 0 0;
+      }
+      code { background: var(--code-bg); padding: .1em .4em; border-radius: 4px; }
+      pre code { background: transparent; padding: 0; }
+
+      ul.req { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+      ul.req li { margin: .25rem 0; }
+
+      footer.site {
+        margin-top: 2rem;
+        padding: 2rem 0 3rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: .9rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: .5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="container">
+        <nav><a href="/">← apps.sskplay.com</a></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero" style="border: 0; padding-top: 3rem;">
+        <img class="icon" src="assets/icon-512.png" alt="AirPlay Touch icon" width="96" height="96" />
+        <div>
+          <h1>AirPlay Touch</h1>
+          <p class="tagline">Turn your Android into an AirPlay receiver — and a touch panel for your Mac.</p>
+        </div>
+      </section>
+
+      <div class="cta">
+        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.airplaytouch">Get it on Google Play</a>
+        <a class="btn" href="#install-mac">macOS companion install</a>
+      </div>
+
+      <section>
+        <h2>Features</h2>
+        <div class="features">
+          <div class="feature">
+            <h3>AirPlay receiver</h3>
+            <p>Receive mirroring from any iPhone, iPad, or Mac on the same Wi-Fi.</p>
+          </div>
+          <div class="feature">
+            <h3>Full-screen mirroring</h3>
+            <p>Adaptive scaling and orientation lock for the cleanest possible picture.</p>
+          </div>
+          <div class="feature">
+            <h3>PIN-protected</h3>
+            <p>Optional PIN code so only trusted devices can connect.</p>
+          </div>
+          <div class="feature">
+            <h3>Touch panel for Mac</h3>
+            <p>Use your Android as a wireless trackpad — tap, drag, multi-finger gestures.</p>
+          </div>
+          <div class="feature">
+            <h3>Gesture mapping</h3>
+            <p>Two-finger swipe → scroll. Three-finger swipe → drag. Cursor snap-back.</p>
+          </div>
+          <div class="feature">
+            <h3>LAN-only, no cloud</h3>
+            <p>Everything runs on your local network. No accounts, no telemetry.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Screenshots</h2>
+        <div class="shots">
+          <img src="assets/screenshot-1.webp" alt="AirPlay Touch screenshot 1" loading="lazy" />
+          <img src="assets/screenshot-2.webp" alt="AirPlay Touch screenshot 2" loading="lazy" />
+          <img src="assets/screenshot-3.webp" alt="AirPlay Touch screenshot 3" loading="lazy" />
+        </div>
+      </section>
+
+      <section id="install">
+        <h2>Install</h2>
+        <div class="install-grid">
+          <div class="install-card">
+            <h3>Android</h3>
+            <p style="color: var(--muted); margin: 0;">Install from the Google Play Store.</p>
+            <p style="margin-top: .9rem;">
+              <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.airplaytouch">Open in Play Store</a>
+            </p>
+            <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
+              Package: <code>com.airplaytouch</code>
+            </p>
+          </div>
+          <div class="install-card" id="install-mac">
+            <h3>macOS companion</h3>
+            <p style="color: var(--muted); margin: 0;">Required for the Touch panel feature. Install with Homebrew:</p>
+<pre><code>brew tap jobtools/airplay-touch
+brew install --cask airplay-touch</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Requirements</h2>
+        <ul class="req">
+          <li>Android 7.0 or later</li>
+          <li>For the Touch panel: a Mac running macOS 14 or later, on the same Wi-Fi</li>
+          <li>DRM-protected content (Apple TV+, Netflix, etc.) cannot be mirrored — this is enforced by the source device</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site">
+      <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; width: 100%;">
+        <span>© sskplay</span>
+        <span><a href="/">All apps</a></span>
+      </div>
+    </footer>
+  </body>
+</html>
