@@ -129,8 +129,14 @@
 
       .shots {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: 1fr;
         gap: 1rem;
+      }
+      @media (min-width: 540px) {
+        .shots { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (min-width: 720px) {
+        .shots { grid-template-columns: repeat(3, 1fr); }
       }
       .shots img {
         width: 100%;
@@ -139,6 +145,10 @@
         border: 1px solid var(--line);
         background: var(--card);
         display: block;
+        object-fit: cover;
+      }
+      @media (min-width: 540px) {
+        .shots img.wide { grid-column: span 2; }
       }
 
       .install-grid {
@@ -265,8 +275,8 @@
       <section>
         <h2>Screenshots</h2>
         <div class="shots">
-          <img src="assets/screenshot-1.webp" alt="AirPlay Touch screenshot 1" loading="lazy" />
-          <img src="assets/screenshot-2.webp" alt="AirPlay Touch screenshot 2" loading="lazy" />
+          <img class="wide" src="assets/screenshot-1.webp" alt="AirPlay Touch screenshot 1" loading="lazy" />
+          <img class="wide" src="assets/screenshot-2.webp" alt="AirPlay Touch screenshot 2" loading="lazy" />
           <img src="assets/screenshot-3.webp" alt="AirPlay Touch screenshot 3" loading="lazy" />
         </div>
       </section>
