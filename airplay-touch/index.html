@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AirPlay Touch — turn Android into an AirPlay receiver and Mac touch panel</title>
-    <meta name="description" content="AirPlay Touch turns your Android phone or tablet into a wireless AirPlay receiver, and into a touch input panel for your Mac." />
+    <title>AirPlay Touch — an AirPlay receiver where the mirrored screen is touch-interactive</title>
+    <meta name="description" content="AirPlay Touch is an AirPlay receiver for Android where the mirrored screen is touch-interactive. Tap the mirrored Mac on your phone, and the Mac responds." />
     <meta property="og:title" content="AirPlay Touch" />
-    <meta property="og:description" content="Turn Android into an AirPlay receiver and a touch panel for your Mac." />
+    <meta property="og:description" content="An AirPlay receiver for Android where the mirrored screen is touch-interactive." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://apps.sskplay.com/airplay-touch/" />
     <meta property="og:image" content="https://apps.sskplay.com/airplay-touch/assets/feature.webp" />
@@ -225,7 +225,7 @@
         <img class="icon" src="assets/icon-512.png" alt="AirPlay Touch icon" width="96" height="96" />
         <div>
           <h1>AirPlay Touch</h1>
-          <p class="tagline">Turn your Android into an AirPlay receiver — and a touch panel for your Mac.</p>
+          <p class="tagline">An AirPlay receiver where the mirrored screen is touch-interactive.</p>
         </div>
       </section>
 
@@ -242,24 +242,24 @@
             <p>Receive mirroring from any iPhone, iPad, or Mac on the same Wi-Fi.</p>
           </div>
           <div class="feature">
+            <h3>Touch the mirrored screen</h3>
+            <p>Tap to click, drag to move the cursor — touches map directly to what you see on the mirrored Mac.</p>
+          </div>
+          <div class="feature">
+            <h3>Two-finger scroll</h3>
+            <p>Two-finger swipe sends scroll events to the source — just like a trackpad.</p>
+          </div>
+          <div class="feature">
+            <h3>Cursor snap-back</h3>
+            <p>Your Mac pointer returns to where it was the moment you release.</p>
+          </div>
+          <div class="feature">
             <h3>Full-screen mirroring</h3>
             <p>Adaptive scaling and orientation lock for the cleanest possible picture.</p>
           </div>
           <div class="feature">
-            <h3>PIN-protected</h3>
-            <p>Optional PIN code so only trusted devices can connect.</p>
-          </div>
-          <div class="feature">
-            <h3>Touch panel for Mac</h3>
-            <p>Use your Android as a wireless trackpad — tap, drag, multi-finger gestures.</p>
-          </div>
-          <div class="feature">
-            <h3>Gesture mapping</h3>
-            <p>Two-finger swipe → scroll. Three-finger swipe → drag. Cursor snap-back.</p>
-          </div>
-          <div class="feature">
-            <h3>LAN-only, no cloud</h3>
-            <p>Everything runs on your local network. No accounts, no telemetry.</p>
+            <h3>PIN-protected, LAN-only</h3>
+            <p>Optional PIN. Everything runs on your local network — no accounts, no cloud, no telemetry.</p>
           </div>
         </div>
       </section>
@@ -267,9 +267,10 @@
       <section>
         <h2>Screenshots</h2>
         <div class="shots">
-          <img src="assets/screenshot-1.webp" alt="AirPlay Touch screenshot 1" loading="lazy" />
-          <img src="assets/screenshot-2.webp" alt="AirPlay Touch screenshot 2" loading="lazy" />
-          <img src="assets/screenshot-3.webp" alt="AirPlay Touch screenshot 3" loading="lazy" />
+          <img src="assets/ready.webp" alt="Standby screen showing the device is ready to receive AirPlay" loading="lazy" />
+          <img src="assets/receive.webp" alt="Receiving an AirPlay connection" loading="lazy" />
+          <img src="assets/mirror.webp" alt="Mac mirrored full-screen on the Android device" loading="lazy" />
+          <img src="assets/customize.webp" alt="Customize settings sheet" loading="lazy" />
         </div>
       </section>
 
@@ -288,7 +289,7 @@
           </div>
           <div class="install-card" id="install-mac">
             <h3>macOS companion</h3>
-            <p style="color: var(--muted); margin: 0;">Required for the Touch panel feature. Install with Homebrew:</p>
+            <p style="color: var(--muted); margin: 0;">Required for touch interaction on the mirrored screen. Install with Homebrew:</p>
             <div class="copy-block">
 <pre id="brew-cmd"><code>brew tap jobtools/airplay-touch
 brew install --cask airplay-touch</code></pre>
@@ -308,7 +309,7 @@ brew install --cask airplay-touch</code></pre>
         <h2>Requirements</h2>
         <ul class="req">
           <li>Android 7.0 or later</li>
-          <li>For the Touch panel: a Mac running macOS 14 or later, on the same Wi-Fi</li>
+          <li>For touch interaction: a Mac running macOS 14 or later, on the same Wi-Fi</li>
           <li>DRM-protected content (Apple TV+, Netflix, etc.) cannot be mirrored — this is enforced by the source device</li>
         </ul>
       </section>
