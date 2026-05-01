@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>App Pin — pin apps to your home screen, even after uninstall</title>
+    <meta name="description" content="App Pin pins apps to your Android home screen. Shortcuts stay in place even after you uninstall the app — tap them to reinstall in one step." />
+    <meta property="og:title" content="App Pin" />
+    <meta property="og:description" content="Pin apps to your home screen. Shortcuts stay forever — even after uninstall." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://apps.sskplay.com/app-pin/" />
+    <meta property="og:image" content="https://apps.sskplay.com/app-pin/assets/screenshot1-pin-apps.webp" />
+    <link rel="icon" href="assets/icon-512.png" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fafafa;
+        --fg: #111;
+        --muted: #6b6b6b;
+        --line: #e5e5e5;
+        --card: #fff;
+        --accent: #0a84ff;
+        --code-bg: #f4f4f5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0b0c;
+          --fg: #f3f3f3;
+          --muted: #9a9a9f;
+          --line: #232326;
+          --card: #141416;
+          --accent: #4ea1ff;
+          --code-bg: #1a1a1d;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .container { max-width: 920px; margin: 0 auto; padding: 0 1.25rem; }
+
+      header.site {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      header.site nav a { color: var(--muted); font-size: .9rem; }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 1.25rem;
+        align-items: center;
+        padding: 3rem 0 2rem;
+      }
+      .hero img.icon {
+        width: 96px; height: 96px;
+        border-radius: 22px;
+        box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      }
+      .hero h1 {
+        margin: 0 0 .25rem;
+        font-size: clamp(1.6rem, 4vw, 2.25rem);
+        letter-spacing: -.01em;
+      }
+      .hero p.tagline {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .75rem;
+        margin: 1.25rem 0 3rem;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        padding: .65rem 1.1rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: .95rem;
+        border: 1px solid var(--line);
+        background: var(--card);
+        color: var(--fg);
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: white;
+        border-color: transparent;
+      }
+      .btn.primary:hover { text-decoration: none; opacity: .92; }
+
+      section { padding: 2rem 0; border-top: 1px solid var(--line); }
+      section h2 {
+        font-size: 1.1rem;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 1rem;
+      }
+      section h3 {
+        font-size: 1.05rem;
+        margin: 0 0 .25rem;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+      .feature {
+        padding: 1rem 1.1rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+      }
+      .feature p { margin: .25rem 0 0; color: var(--muted); font-size: .95rem; }
+
+      .shots {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        align-items: start;
+        gap: 1rem;
+      }
+      .shots img {
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: var(--card);
+        display: block;
+      }
+
+      ul.req { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+      ul.req li { margin: .25rem 0; }
+
+      footer.site {
+        margin-top: 2rem;
+        padding: 2rem 0 3rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: .9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="container">
+        <nav><a href="/">← apps.sskplay.com</a></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero" style="border: 0; padding-top: 3rem;">
+        <img class="icon" src="assets/icon-512.png" alt="App Pin icon" width="96" height="96" />
+        <div>
+          <h1>App Pin</h1>
+          <p class="tagline">Pin apps to your home screen. Shortcuts stay forever — even after uninstall.</p>
+        </div>
+      </section>
+
+      <div class="cta">
+        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.ssk.apppin">Get it on Google Play</a>
+      </div>
+
+      <section>
+        <h2>Features</h2>
+        <div class="features">
+          <div class="feature">
+            <h3>Permanent shortcuts</h3>
+            <p>Pin any app to the home screen. The shortcut stays in place even after you uninstall the app.</p>
+          </div>
+          <div class="feature">
+            <h3>Smart launch</h3>
+            <p>Tap a shortcut: if the app is installed, it opens. If not, Play Store opens to reinstall it instantly.</p>
+          </div>
+          <div class="feature">
+            <h3>Original icon</h3>
+            <p>Shortcuts use the real app icon, so your home screen layout stays clean and recognizable.</p>
+          </div>
+          <div class="feature">
+            <h3>Auto cleanup</h3>
+            <p>Detects package removals in the background and keeps your dashboard tidy automatically.</p>
+          </div>
+          <div class="feature">
+            <h3>Manage in one place</h3>
+            <p>Dashboard for every pinned app — re-pin, rename, view info, or remove from a single screen.</p>
+          </div>
+          <div class="feature">
+            <h3>Material You</h3>
+            <p>Built with Jetpack Compose and Material 3. Lightweight, offline, no account required.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Screenshots</h2>
+        <div class="shots">
+          <img src="assets/screenshot1-pin-apps.webp" alt="Pinned apps stay on the home screen even after uninstall" loading="lazy" />
+          <img src="assets/screenshot2-reinstall.webp" alt="Tapping a shortcut to a deleted app opens the Play Store to reinstall" loading="lazy" />
+          <img src="assets/s_main.webp" alt="App Pin dashboard listing active shortcuts" loading="lazy" />
+          <img src="assets/add-to-home-screen.webp" alt="Add to home screen confirmation sheet" loading="lazy" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Requirements</h2>
+        <ul class="req">
+          <li>Android 8.0 or later</li>
+          <li>A launcher that supports pinned shortcuts (most stock and third-party launchers do)</li>
+          <li>Free tier: up to 10 pinned shortcuts</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site">
+      <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;">
+        <span>© sskplay</span>
+        <span><a href="/">All apps</a></span>
+      </div>
+    </footer>
+  </body>
+</html>
