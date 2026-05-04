@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AudioCast — stream your Mac audio to an Android phone over Wi-Fi</title>
+    <meta name="description" content="AudioCast streams your Mac's system audio to your Android phone over Wi-Fi. No cables, no Bluetooth pairing, low latency — turn any Android into a wireless speaker for your computer." />
+    <meta property="og:title" content="AudioCast" />
+    <meta property="og:description" content="Stream your Mac audio to your Android phone over Wi-Fi. No cables, low latency." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://apps.sskplay.com/audiocast/" />
+    <meta property="og:image" content="https://apps.sskplay.com/audiocast/assets/01-connected.webp" />
+    <link rel="icon" href="assets/icon-512.png" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fafafa;
+        --fg: #111;
+        --muted: #6b6b6b;
+        --line: #e5e5e5;
+        --card: #fff;
+        --accent: #0a84ff;
+        --code-bg: #f4f4f5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0b0c;
+          --fg: #f3f3f3;
+          --muted: #9a9a9f;
+          --line: #232326;
+          --card: #141416;
+          --accent: #4ea1ff;
+          --code-bg: #1a1a1d;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .container { max-width: 920px; margin: 0 auto; padding: 0 1.25rem; }
+
+      header.site {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      header.site nav a { color: var(--muted); font-size: .9rem; }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 1.25rem;
+        align-items: center;
+        padding: 3rem 0 2rem;
+      }
+      .hero img.icon {
+        width: 96px; height: 96px;
+        border-radius: 22px;
+        box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      }
+      .hero h1 {
+        margin: 0 0 .25rem;
+        font-size: clamp(1.6rem, 4vw, 2.25rem);
+        letter-spacing: -.01em;
+      }
+      .hero p.tagline {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .75rem;
+        margin: 1.25rem 0 3rem;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        padding: .65rem 1.1rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: .95rem;
+        border: 1px solid var(--line);
+        background: var(--card);
+        color: var(--fg);
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: white;
+        border-color: transparent;
+      }
+      .btn.primary:hover { text-decoration: none; opacity: .92; }
+
+      section { padding: 2rem 0; border-top: 1px solid var(--line); }
+      section h2 {
+        font-size: 1.1rem;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 1rem;
+      }
+      section h3 {
+        font-size: 1.05rem;
+        margin: 0 0 .25rem;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+      .feature {
+        padding: 1rem 1.1rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+      }
+      .feature p { margin: .25rem 0 0; color: var(--muted); font-size: .95rem; }
+
+      .shots {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        align-items: start;
+        gap: 1rem;
+      }
+      .shots img {
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: var(--card);
+        display: block;
+      }
+
+      .install-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      @media (min-width: 720px) {
+        .install-grid { grid-template-columns: 1fr 1fr; }
+      }
+      .install-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+        padding: 1.25rem;
+      }
+      .install-card h3 { margin-bottom: .5rem; }
+
+      pre, code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: .9rem;
+      }
+      pre {
+        background: var(--code-bg);
+        padding: .85rem 1rem;
+        border-radius: 10px;
+        overflow-x: auto;
+        margin: .75rem 0 0;
+      }
+      code { background: var(--code-bg); padding: .1em .4em; border-radius: 4px; }
+      pre code { background: transparent; padding: 0; }
+
+      .copy-block { position: relative; }
+      .copy-block pre { padding-right: 3rem; }
+      .copy-btn {
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: .35rem;
+        padding: .3rem .55rem;
+        font: 600 .75rem/1 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        color: var(--muted);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: .85;
+        transition: opacity .15s ease, color .15s ease, border-color .15s ease;
+      }
+      .copy-btn:hover { opacity: 1; color: var(--fg); }
+      .copy-btn.copied { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+      .copy-btn svg { width: 14px; height: 14px; }
+
+      ul.req { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+      ul.req li { margin: .25rem 0; }
+
+      footer.site {
+        margin-top: 2rem;
+        padding: 2rem 0 3rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: .9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="container">
+        <nav><a href="/">← apps.sskplay.com</a></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero" style="border: 0; padding-top: 3rem;">
+        <img class="icon" src="assets/icon-512.png" alt="AudioCast icon" width="96" height="96" />
+        <div>
+          <h1>AudioCast</h1>
+          <p class="tagline">Stream your Mac audio to your Android phone over Wi-Fi. No cables, low latency.</p>
+        </div>
+      </section>
+
+      <div class="cta">
+        <a class="btn primary" href="https://play.google.com/store/apps/details?id=audio.cast">Get it on Google Play</a>
+        <a class="btn" href="#install-mac">macOS sender install</a>
+      </div>
+
+      <section>
+        <h2>Features</h2>
+        <div class="features">
+          <div class="feature">
+            <h3>Wireless audio over Wi-Fi</h3>
+            <p>Both apps discover each other on the local network. Tap to connect — no Bluetooth pairing, no cables.</p>
+          </div>
+          <div class="feature">
+            <h3>Three latency modes</h3>
+            <p>Game (~0&nbsp;ms buffer) for tight A/V sync, Normal (~40&nbsp;ms) for everyday listening, Music (~200&nbsp;ms) for the smoothest playback.</p>
+          </div>
+          <div class="feature">
+            <h3>Pause on disconnect</h3>
+            <p>Optional: tapping Disconnect can automatically pause whatever's playing on your Mac — useful when you step away.</p>
+          </div>
+          <div class="feature">
+            <h3>Stays out of the way</h3>
+            <p>The Mac sender lives quietly in the menu bar. Blue when connected, neutral when idle.</p>
+          </div>
+          <div class="feature">
+            <h3>Opus over UDP</h3>
+            <p>Captures system audio via BlackHole, encodes Opus at 48&nbsp;kHz stereo, sends over UDP — TCP only for the control channel.</p>
+          </div>
+          <div class="feature">
+            <h3>No accounts, no cloud</h3>
+            <p>Audio never leaves your Wi-Fi. No analytics, no ads, no servers in the middle.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Screenshots</h2>
+        <div class="shots">
+          <img src="assets/01-connected.webp" alt="Connected state with live audio waveform on Android" loading="lazy" />
+          <img src="assets/02-waiting.webp" alt="Waiting-for-connection screen with a hint to join the same Wi-Fi" loading="lazy" />
+          <img src="assets/03-settings.webp" alt="Settings: latency mode picker and pause-on-disconnect toggle" loading="lazy" />
+        </div>
+      </section>
+
+      <section id="install">
+        <h2>Install</h2>
+        <div class="install-grid">
+          <div class="install-card">
+            <h3>Android</h3>
+            <p style="color: var(--muted); margin: 0;">Install from the Google Play Store.</p>
+            <p style="margin-top: .9rem;">
+              <a class="btn primary" href="https://play.google.com/store/apps/details?id=audio.cast">Open in Play Store</a>
+            </p>
+            <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
+              Package: <code>audio.cast</code>
+            </p>
+          </div>
+          <div class="install-card" id="install-mac">
+            <h3>macOS sender</h3>
+            <p style="color: var(--muted); margin: 0;">Required to capture and send your Mac's system audio. Install with Homebrew:</p>
+            <div class="copy-block">
+<pre id="brew-cmd"><code>brew tap jobtools/audiocast
+brew install --cask audiocast</code></pre>
+              <button class="copy-btn" type="button" data-copy-target="brew-cmd" aria-label="Copy install command">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect x="4" y="4" width="9" height="10" rx="1.5" />
+                  <path d="M3 11V3a1 1 0 0 1 1-1h7" />
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
+              The sender uses the BlackHole virtual audio driver to capture system audio. The app installs it for you on first launch if it isn't already present.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Requirements</h2>
+        <ul class="req">
+          <li>Android 8.0 or later</li>
+          <li>A Mac running macOS 14 or later for the sender app (Windows is on the roadmap)</li>
+          <li>Both devices on the same Wi-Fi network</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site">
+      <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;">
+        <span>© sskplay</span>
+        <span><a href="/">All apps</a></span>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelectorAll('.copy-btn[data-copy-target]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const target = document.getElementById(btn.dataset.copyTarget);
+          if (!target) return;
+          const text = target.innerText.trim();
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch {
+            const r = document.createRange();
+            r.selectNodeContents(target);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(r);
+            try { document.execCommand('copy'); } catch {}
+            sel.removeAllRanges();
+          }
+          const label = btn.querySelector('span');
+          const original = label.textContent;
+          label.textContent = 'Copied';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            label.textContent = original;
+            btn.classList.remove('copied');
+          }, 1500);
+        });
+      });
+    </script>
+  </body>
+</html>
