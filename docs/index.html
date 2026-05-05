@@ -57,6 +57,18 @@
 
       main { padding-bottom: 4rem; }
 
+      section.cat {
+        padding-top: 2rem;
+      }
+      section.cat h2 {
+        font-size: 1rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 1rem;
+        font-weight: 600;
+      }
+
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -83,11 +95,13 @@
         flex-shrink: 0;
         background: var(--card);
       }
+      .card img.icon.pixel { image-rendering: pixelated; }
       .card .meta { min-width: 0; }
-      .card h2 {
+      .card h3 {
         margin: 0 0 .15rem;
         font-size: 1.05rem;
         letter-spacing: -.005em;
+        font-weight: 600;
       }
       .card p {
         margin: 0;
@@ -118,36 +132,122 @@
     </header>
 
     <main class="container">
-      <div class="grid">
-        <a class="card" href="/airplay-touch/">
-          <img class="icon" src="airplay-touch/assets/icon-512.png" alt="AirPlay Touch icon" width="56" height="56" />
-          <div class="meta">
-            <h2>AirPlay Touch</h2>
-            <p>An AirPlay receiver where the mirrored screen is touch-interactive.</p>
-          </div>
-        </a>
-        <a class="card" href="/app-pin/">
-          <img class="icon" src="app-pin/assets/icon-512.png" alt="App Pin icon" width="56" height="56" />
-          <div class="meta">
-            <h2>App Pin</h2>
-            <p>Pin apps to your home screen. Shortcuts stay forever — even after uninstall.</p>
-          </div>
-        </a>
-        <a class="card" href="/audiocast/">
-          <img class="icon" src="audiocast/assets/icon-512.png" alt="AudioCast icon" width="56" height="56" />
-          <div class="meta">
-            <h2>AudioCast</h2>
-            <p>Stream your Mac audio to your Android phone over Wi-Fi. No cables, low latency.</p>
-          </div>
-        </a>
-        <a class="card" href="/harudama/">
-          <img class="icon" src="harudama/assets/icon-512.png" alt="Harudama icon" width="56" height="56" />
-          <div class="meta">
-            <h2>Harudama</h2>
-            <p>An AI diary that replies. Record your day, see your emotions on a calendar.</p>
-          </div>
-        </a>
-      </div>
+      <section class="cat">
+        <h2>Apps</h2>
+        <div class="grid">
+          <a class="card" href="/airplay-touch/">
+            <img class="icon" src="airplay-touch/assets/icon-512.png" alt="AirPlay Touch icon" width="56" height="56" />
+            <div class="meta">
+              <h3>AirPlay Touch</h3>
+              <p>An AirPlay receiver where the mirrored screen is touch-interactive.</p>
+            </div>
+          </a>
+          <a class="card" href="/audiocast/">
+            <img class="icon" src="audiocast/assets/icon-512.png" alt="AudioCast icon" width="56" height="56" />
+            <div class="meta">
+              <h3>AudioCast</h3>
+              <p>Stream your Mac audio to your Android phone over Wi-Fi. No cables, low latency.</p>
+            </div>
+          </a>
+          <a class="card" href="/app-pin/">
+            <img class="icon" src="app-pin/assets/icon-512.png" alt="App Pin icon" width="56" height="56" />
+            <div class="meta">
+              <h3>App Pin</h3>
+              <p>Pin apps to your home screen. Shortcuts stay forever — even after uninstall.</p>
+            </div>
+          </a>
+          <a class="card" href="/coupox/">
+            <img class="icon" src="coupox/assets/icon-512.png" alt="Coupox icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Coupox</h3>
+              <p>Keep every coupon and gifticon in one place. Stop digging through chat threads at the register.</p>
+            </div>
+          </a>
+          <a class="card" href="/harudama/">
+            <img class="icon" src="harudama/assets/icon-512.png" alt="Harudama icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Harudama</h3>
+              <p>An AI diary that replies. Record your day, see your emotions on a calendar.</p>
+            </div>
+          </a>
+          <a class="card" href="/magnifier/">
+            <img class="icon" src="magnifier/assets/icon-512.png" alt="Magnifier icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Magnifier</h3>
+              <p>Turn your phone into a quick magnifying glass. Open, point, read.</p>
+            </div>
+          </a>
+          <a class="card" href="/teamplay/">
+            <img class="icon" src="teamplay/assets/icon-512.png" alt="Team Play icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Team Play</h3>
+              <p>Fair team picker for pickup games. Drop in players, hit shuffle, get balanced sides.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="cat">
+        <h2>Games</h2>
+        <div class="grid">
+          <a class="card" href="/fireworks/">
+            <img class="icon pixel" src="fireworks/assets/icon-512.png" alt="Mono Fireworks icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Fireworks</h3>
+              <p>Touch the night sky. 1990 style pixel fireworks across 12 landscapes.</p>
+            </div>
+          </a>
+          <a class="card" href="/pong/">
+            <img class="icon pixel" src="pong/assets/icon-512.png" alt="Mono Pong icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Pong</h3>
+              <p>Retro pong with 5 stages, sparking obstacles, and an AI-vs-AI watch mode.</p>
+            </div>
+          </a>
+          <a class="card" href="/hangman/">
+            <img class="icon pixel" src="hangman/assets/icon-512.png" alt="Mono Hangman icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Hangman</h3>
+              <p>Classic hangman in a 1-bit handheld. Layered clues, hint economy, HI SCORE chase.</p>
+            </div>
+          </a>
+          <a class="card" href="/potato/">
+            <img class="icon pixel" src="potato/assets/icon-512.png" alt="Mono Potato Volleyball icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Potato Volleyball</h3>
+              <p>Two potatoes, one ball, one net. Land it on the nose for a triple-speed spike.</p>
+            </div>
+          </a>
+          <a class="card" href="/missile-defense/">
+            <img class="icon pixel" src="missile-defense/assets/icon-512.png" alt="Mono Missile Defense icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Missile Defense</h3>
+              <p>Defend your cities. Intercept the missiles. Survive all 30 waves.</p>
+            </div>
+          </a>
+          <a class="card" href="/scorch/">
+            <img class="icon pixel" src="scorch/assets/icon-512.png" alt="Mono Scorch icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Scorch</h3>
+              <p>Turn-based artillery duel. Aim, charge, fire — but watch the wind.</p>
+            </div>
+          </a>
+          <a class="card" href="/snake/">
+            <img class="icon pixel" src="snake/assets/icon-512.png" alt="Mono Snake icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Mono Snake</h3>
+              <p>Classic snake with 5 stages, 3 difficulties, and an AI-vs-AI watch mode.</p>
+            </div>
+          </a>
+          <a class="card" href="/monoban/">
+            <img class="icon pixel" src="monoban/assets/icon-512.png" alt="Monoban icon" width="56" height="56" />
+            <div class="meta">
+              <h3>Monoban</h3>
+              <p>Sokoban with a contemplative AI watch mode that turns the screen into a clock.</p>
+            </div>
+          </a>
+        </div>
+      </section>
     </main>
 
     <footer class="site">
