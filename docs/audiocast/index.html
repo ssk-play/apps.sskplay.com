@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AudioCast — stream your Mac audio to an Android phone over Wi-Fi</title>
-    <meta name="description" content="AudioCast streams your Mac's system audio to your Android phone over Wi-Fi. No cables, no Bluetooth pairing, low latency — turn any Android into a wireless speaker for your computer." />
+    <title>AudioCast — stream your Mac or Windows audio to an Android phone over Wi-Fi</title>
+    <meta name="description" content="AudioCast streams your Mac or Windows system audio to your Android phone over Wi-Fi. No cables, no Bluetooth pairing, low latency — turn any Android into a wireless speaker for your computer." />
     <meta property="og:title" content="AudioCast" />
-    <meta property="og:description" content="Stream your Mac audio to your Android phone over Wi-Fi. No cables, low latency." />
+    <meta property="og:description" content="Stream your Mac or Windows audio to your Android phone over Wi-Fi. No cables, low latency." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://apps.sskplay.com/audiocast/" />
     <meta property="og:image" content="https://apps.sskplay.com/audiocast/assets/01-connected.webp" />
@@ -149,7 +149,7 @@
         gap: 1.25rem;
       }
       @media (min-width: 720px) {
-        .install-grid { grid-template-columns: 1fr 1fr; }
+        .install-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
       }
       .install-card {
         border: 1px solid var(--line);
@@ -220,13 +220,13 @@
         <img class="icon" src="assets/icon-512.png" alt="AudioCast icon" width="96" height="96" />
         <div>
           <h1>AudioCast</h1>
-          <p class="tagline">Stream your Mac audio to your Android phone over Wi-Fi. No cables, low latency.</p>
+          <p class="tagline">Stream your Mac or Windows audio to your Android phone over Wi-Fi. No cables, low latency.</p>
         </div>
       </section>
 
       <div class="cta">
         <a class="btn primary" href="https://play.google.com/store/apps/details?id=audio.cast">Get it on Google Play</a>
-        <a class="btn" href="#install-mac">macOS sender install</a>
+        <a class="btn" href="#install">Desktop sender install</a>
       </div>
 
       <section>
@@ -250,7 +250,7 @@
           </div>
           <div class="feature">
             <h3>Opus over UDP</h3>
-            <p>Captures system audio via BlackHole, encodes Opus at 48&nbsp;kHz stereo, sends over UDP — TCP only for the control channel.</p>
+            <p>Captures system audio (AudioCastDriver on Mac, WASAPI loopback on Windows), encodes Opus at 48&nbsp;kHz stereo, sends over UDP — TCP only for the control channel.</p>
           </div>
           <div class="feature">
             <h3>No accounts, no cloud</h3>
@@ -296,7 +296,25 @@ brew install --cask audiocast</code></pre>
               </button>
             </div>
             <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
-              The sender uses the BlackHole virtual audio driver to capture system audio. The app installs it for you on first launch if it isn't already present.
+              The sender uses the AudioCastDriver virtual audio driver to capture system audio. The app installs it for you on first launch if it isn't already present.
+            </p>
+          </div>
+          <div class="install-card" id="install-windows">
+            <h3>Windows sender</h3>
+            <p style="color: var(--muted); margin: 0;">Required to capture and send your PC's system audio. Install with <a href="https://scoop.sh">Scoop</a>:</p>
+            <div class="copy-block">
+<pre id="scoop-cmd"><code>scoop bucket add jobtools https://github.com/jobtools/scoop-bucket
+scoop install audiocast</code></pre>
+              <button class="copy-btn" type="button" data-copy-target="scoop-cmd" aria-label="Copy install command">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect x="4" y="4" width="9" height="10" rx="1.5" />
+                  <path d="M3 11V3a1 1 0 0 1 1-1h7" />
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
+              No virtual driver needed — Windows audio is captured directly via WASAPI loopback. First launch may show a SmartScreen prompt; click "More info" → "Run anyway".
             </p>
           </div>
         </div>
@@ -306,7 +324,7 @@ brew install --cask audiocast</code></pre>
         <h2>Requirements</h2>
         <ul class="req">
           <li>Android 8.0 or later</li>
-          <li>A Mac running macOS 14 or later for the sender app (Windows is on the roadmap)</li>
+          <li>A Mac (macOS 14+) or a Windows 10/11 PC for the sender app</li>
           <li>Both devices on the same Wi-Fi network</li>
         </ul>
       </section>
