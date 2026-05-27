@@ -231,31 +231,23 @@
       </div>
 
       <section>
-        <h2>Features</h2>
+        <h2>What you get</h2>
         <div class="features">
           <div class="feature">
-            <h3>Wireless audio over Wi-Fi</h3>
-            <p>Both apps discover each other on the local network. Tap to connect — no Bluetooth pairing, no cables.</p>
+            <h3>A wireless speaker for your computer</h3>
+            <p>Plug your headphones into your Android and your Mac or PC plays through them. Move around the house, keep audio private — no cables, no Bluetooth pairing.</p>
           </div>
           <div class="feature">
-            <h3>Three latency modes</h3>
-            <p>Game (~0&nbsp;ms buffer) for tight A/V sync, Normal (~40&nbsp;ms) for everyday listening, Music (~200&nbsp;ms) for the smoothest playback.</p>
+            <h3>Low latency for video and games</h3>
+            <p>Three modes: tight A/V sync for games and movies, balanced for everyday, smoothest for music. Pick what fits the moment.</p>
           </div>
           <div class="feature">
-            <h3>Pause on disconnect</h3>
-            <p>Optional: tapping Disconnect can automatically pause whatever's playing on your Mac — useful when you step away.</p>
+            <h3>Auto-pause when you step away</h3>
+            <p>Optional: disconnect on your phone and your Mac pauses what was playing. Reconnect and pick up where you left off.</p>
           </div>
           <div class="feature">
-            <h3>Stays out of the way</h3>
-            <p>The Mac sender lives quietly in the menu bar. Blue when connected, neutral when idle.</p>
-          </div>
-          <div class="feature">
-            <h3>Opus over UDP</h3>
-            <p>Captures system audio (AudioCastDriver on Mac, WASAPI loopback on Windows), encodes Opus at 48&nbsp;kHz stereo, sends over UDP — TCP only for the control channel.</p>
-          </div>
-          <div class="feature">
-            <h3>No accounts, no cloud</h3>
-            <p>Audio never leaves your Wi-Fi. No analytics, no ads, no servers in the middle.</p>
+            <h3>Quietly in the menu bar</h3>
+            <p>The Mac sender stays out of the way until you need it. Blue when connected, neutral when idle.</p>
           </div>
         </div>
       </section>
@@ -297,25 +289,17 @@ brew install --cask audiocast</code></pre>
               </button>
             </div>
             <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
-              The sender uses the AudioCastDriver virtual audio driver to capture system audio. The app installs it for you on first launch if it isn't already present.
+              First launch installs a small audio capture driver — accept the macOS prompts when they appear.
             </p>
           </div>
           <div class="install-card" id="install-windows">
             <h3>Windows sender</h3>
-            <p style="color: var(--muted); margin: 0;">Required to capture and send your PC's system audio. Install with <a href="https://scoop.sh">Scoop</a>:</p>
-            <div class="copy-block">
-<pre id="scoop-cmd"><code>scoop bucket add jobtools https://github.com/jobtools/scoop-bucket
-scoop install audiocast</code></pre>
-              <button class="copy-btn" type="button" data-copy-target="scoop-cmd" aria-label="Copy install command">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <rect x="4" y="4" width="9" height="10" rx="1.5" />
-                  <path d="M3 11V3a1 1 0 0 1 1-1h7" />
-                </svg>
-                <span>Copy</span>
-              </button>
-            </div>
+            <p style="color: var(--muted); margin: 0;">Required to capture and send your PC's system audio.</p>
+            <p style="margin-top: .9rem;">
+              <a class="btn primary" href="https://apps.microsoft.com/detail/9P11DQFQ6MTF">Open in Microsoft Store</a>
+            </p>
             <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
-              No virtual driver needed — Windows audio is captured directly via WASAPI loopback. First launch may show a SmartScreen prompt; click "More info" → "Run anyway".
+              Windows 10 or 11. Lives in the system tray after install.
             </p>
           </div>
         </div>
