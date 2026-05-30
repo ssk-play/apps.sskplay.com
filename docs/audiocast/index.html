@@ -10,6 +10,15 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://apps.sskplay.com/audiocast/" />
     <meta property="og:image" content="https://apps.sskplay.com/audiocast/assets/01-connected.webp" />
+    <meta property="og:video" content="https://www.youtube.com/embed/sznO3y3WbHw" />
+    <meta property="og:video:secure_url" content="https://www.youtube.com/embed/sznO3y3WbHw" />
+    <meta property="og:video:type" content="text/html" />
+    <meta property="og:video:width" content="720" />
+    <meta property="og:video:height" content="1280" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AudioCast" />
+    <meta name="twitter:description" content="Stream your Mac or Windows audio to your Android phone over Wi-Fi. No cables, low latency." />
+    <meta name="twitter:image" content="https://apps.sskplay.com/audiocast/assets/01-connected.webp" />
     <link rel="icon" href="assets/icon-512.png" />
     <style>
       :root {
@@ -143,6 +152,25 @@
         display: block;
       }
 
+      .demo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .85rem;
+      }
+      .video-frame {
+        width: 100%;
+        max-width: 320px;
+        aspect-ratio: 9 / 16;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #000;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, .12);
+      }
+      .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+      .demo p.cap { margin: 0; color: var(--muted); font-size: .9rem; text-align: center; }
+
       .install-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -226,9 +254,29 @@
 
       <div class="cta">
         <a class="btn primary" href="https://play.google.com/store/apps/details?id=audio.cast">Get it on Google Play</a>
+        <a class="btn" href="#demo">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M5 3.4v9.2l7.5-4.6z" /></svg>
+          Watch the demo
+        </a>
         <a class="btn" href="#install-windows">Windows sender install</a>
         <a class="btn" href="#install-mac">macOS sender install</a>
       </div>
+
+      <section id="demo">
+        <h2>See it in action</h2>
+        <div class="demo">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/sznO3y3WbHw"
+              title="AudioCast demo — turn your phone into a wireless speaker for your PC"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <p class="cap">25-second demo · <a href="https://youtu.be/sznO3y3WbHw" target="_blank" rel="noopener" aria-label="Watch on YouTube (opens in a new tab)">Watch on YouTube</a></p>
+        </div>
+      </section>
 
       <section>
         <h2>What you get</h2>
