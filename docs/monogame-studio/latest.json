@@ -1,9 +1,9 @@
 {
-  "version": "1.0.2",
-  "versionCode": 3,
+  "version": "1.0.3",
+  "versionCode": 4,
   "apk": "monogame-studio.apk",
   "size": 4530446,
   "sizeLabel": "4.3 MB",
-  "sha256": "430a795442e06f9605cb1ae446031f495af009570c50eb5a8af60a99a959c250",
+  "sha256": "9f9b9bc225eef44fa63c7d4d7b7b3bc51792b580c7fb5dc32883c6399c401402",
   "updated": "2026-06-18"
 }
