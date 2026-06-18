@@ -153,9 +153,9 @@
       </section>
 
       <div class="cta">
-        <a class="btn primary" href="monogame-studio-1.0.0.apk" download>Download APK · v1.0.0</a>
+        <a class="btn primary" id="dl-apk" href="monogame-studio.apk" download>Download APK</a>
         <a class="btn" href="https://monogame.cc/dev/">Open in browser</a>
-        <span class="note">Android · ~3 MB · sideload (enable “Install unknown apps”)</span>
+        <span class="note" id="dl-note">Android · sideload (enable “Install unknown apps”)</span>
       </div>
 
       <section>
@@ -184,5 +184,26 @@
         <span><a href="https://feedback.sskplay.com/?product=monogame-studio" target="_blank" rel="noopener">Feedback</a> &nbsp;·&nbsp; <a href="/">All apps</a></span>
       </div>
     </footer>
+
+    <script>
+      // Version + download come from latest.json, so shipping a new APK never
+      // needs a page edit — deploy_studio.sh just updates the APK + metadata.
+      fetch("latest.json", { cache: "no-store" })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((m) => {
+          if (!m) return;
+          const a = document.getElementById("dl-apk");
+          if (a) {
+            a.href = m.apk;
+            a.textContent = "Download APK · v" + m.version;
+          }
+          const n = document.getElementById("dl-note");
+          if (n && m.sizeLabel) {
+            n.textContent =
+              "Android · " + m.sizeLabel + " · sideload (enable “Install unknown apps”)";
+          }
+        })
+        .catch(() => {});
+    </script>
   </body>
 </html>
