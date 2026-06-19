@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AdSsk Sample Survey Wall</title>
+    <style>
+      :root { color-scheme: light dark; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #0b1411; color: #eafff5;
+        font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+      header { position: sticky; top: 0; z-index: 5;
+        background: linear-gradient(180deg,#1b9c6b,#0e7a52); padding: 16px 18px;
+        display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 12px rgba(0,0,0,.35); }
+      header .title { font-weight: 700; font-size: 1.05rem; }
+      header .bal { font-size: .85rem; } header .bal b { font-size: 1rem; }
+      .close { background: rgba(255,255,255,.16); border: 0; color: #fff; width: 32px; height: 32px;
+        border-radius: 999px; font-size: 18px; cursor: pointer; }
+      .wrap { padding: 16px 14px 28px; max-width: 720px; margin: 0 auto; }
+      .lead { color: #9fd3bf; font-size: .85rem; margin: 2px 2px 16px; }
+      .survey { background: #122019; border: 1px solid #21342b; border-radius: 16px; padding: 16px; margin-bottom: 14px; }
+      .survey h3 { margin: 0 0 4px; font-size: 1rem; }
+      .survey .reward { color: #ffd24a; font-weight: 700; font-size: .82rem; margin-bottom: 10px; }
+      .opts { display: grid; gap: 8px; }
+      .opt { background: #18271f; border: 1px solid #273b30; border-radius: 12px; padding: .7rem .9rem;
+        color: #eafff5; text-align: left; font-size: .9rem; cursor: pointer; }
+      .opt:active { background: #1f3527; }
+      .opt[disabled] { background: #1b9c6b; border-color: transparent; color: #fff; }
+      .note { text-align: center; color: #6f8a7c; font-size: .75rem; margin-top: 12px; }
+      .toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%) translateY(20px);
+        background: #1b9c6b; color: #fff; padding: .6rem 1.1rem; border-radius: 999px;
+        font-weight: 700; font-size: .85rem; opacity: 0; transition: all .25s; pointer-events: none; }
+      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="title">Survey Wall</span>
+      <span class="bal">Earned: <b id="bal">0</b> 🪙</span>
+      <button class="close" id="close" aria-label="Close">×</button>
+    </header>
+    <main class="wrap">
+      <p class="lead">Sample survey-style offerwall for the AdSsk demo. Answering credits a reward
+        through the <code>SsmobOfferwall</code> bridge.</p>
+      <div id="surveys"></div>
+      <p class="note">Demo only — no real surveys.</p>
+    </main>
+    <div class="toast" id="toast"></div>
+    <script>
+      var SURVEYS = [
+        { id: "s1", q: "How many hours/day do you game?", reward: 60, opts: ["<1h", "1–3h", "3h+"] },
+        { id: "s2", q: "Favorite game genre?", reward: 90, opts: ["Puzzle", "RPG", "Action", "Casual"] },
+        { id: "s3", q: "Would you pay to remove ads?", reward: 150, opts: ["Yes", "Maybe", "No"] }
+      ];
+      var bal = 0, balEl = document.getElementById("bal"), toastEl = document.getElementById("toast");
+      function bridge() { return (typeof SsmobOfferwall !== "undefined") ? SsmobOfferwall : null; }
+      function toast(m) { toastEl.textContent = m; toastEl.classList.add("show");
+        setTimeout(function(){ toastEl.classList.remove("show"); }, 1600); }
+      function txId() { return "survey-" + Date.now() + "-" + Math.floor(Math.random()*1e6); }
+      function answer(s, card) {
+        if (card.dataset.done) return; card.dataset.done = "1";
+        bal += s.reward; balEl.textContent = bal;
+        Array.prototype.forEach.call(card.querySelectorAll(".opt"), function(b){ b.disabled = true; });
+        toast("+" + s.reward + " 🪙 credited");
+        var b = bridge(); if (b && b.onReward) b.onReward(s.reward, "coins", txId());
+      }
+      var box = document.getElementById("surveys");
+      SURVEYS.forEach(function(s){
+        var card = document.createElement("div"); card.className = "survey";
+        var opts = '<div class="opts">' + s.opts.map(function(o){ return '<button class="opt">'+o+'</button>'; }).join("") + '</div>';
+        card.innerHTML = '<h3>'+s.q+'</h3><div class="reward">+'+s.reward+' coins</div>'+opts;
+        Array.prototype.forEach.call(card.querySelectorAll(".opt"), function(b){ b.onclick = function(){ answer(s, card); }; });
+        box.appendChild(card);
+      });
+      document.getElementById("close").onclick = function(){ var b = bridge(); if (b && b.close) b.close(); else history.back(); };
+    </script>
+  </body>
+</html>
