@@ -63,7 +63,7 @@
 
     <main class="wrap">
       <p class="lead">Sample offerwall for the AdSsk demo. Completing an offer calls the
-        <code>SsmobOfferwall</code> reward bridge back into the app.</p>
+        <code>AdSskOfferwall</code> reward bridge back into the app.</p>
       <div id="offers"></div>
       <p class="note">Demo only — no real offers. In production this page is your offerwall served from your server.</p>
     </main>
@@ -85,7 +85,7 @@
 
       function bridge() {
         // Injected by AdSsk's OfferwallActivity. Absent when viewed in a normal browser.
-        return (typeof SsmobOfferwall !== "undefined") ? SsmobOfferwall : null;
+        return (typeof AdSskOfferwall !== "undefined") ? AdSskOfferwall : null;
       }
       function toast(msg) {
         toastEl.textContent = msg;

@@ -41,7 +41,7 @@
     </header>
     <main class="wrap">
       <p class="lead">Sample survey-style offerwall for the AdSsk demo. Answering credits a reward
-        through the <code>SsmobOfferwall</code> bridge.</p>
+        through the <code>AdSskOfferwall</code> bridge.</p>
       <div id="surveys"></div>
       <p class="note">Demo only — no real surveys.</p>
     </main>
@@ -53,7 +53,7 @@
         { id: "s3", q: "Would you pay to remove ads?", reward: 150, opts: ["Yes", "Maybe", "No"] }
       ];
       var bal = 0, balEl = document.getElementById("bal"), toastEl = document.getElementById("toast");
-      function bridge() { return (typeof SsmobOfferwall !== "undefined") ? SsmobOfferwall : null; }
+      function bridge() { return (typeof AdSskOfferwall !== "undefined") ? AdSskOfferwall : null; }
       function toast(m) { toastEl.textContent = m; toastEl.classList.add("show");
         setTimeout(function(){ toastEl.classList.remove("show"); }, 1600); }
       function txId() { return "survey-" + Date.now() + "-" + Math.floor(Math.random()*1e6); }
