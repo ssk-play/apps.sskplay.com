@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ssMob Sample Offerwall</title>
+    <style>
+      :root { color-scheme: light dark; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; background: #0f1115; color: #f3f3f5;
+        font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      header {
+        position: sticky; top: 0; z-index: 5;
+        background: linear-gradient(180deg, #1565c0, #0d47a1);
+        padding: 16px 18px; display: flex; align-items: center; justify-content: space-between;
+        box-shadow: 0 2px 12px rgba(0,0,0,.35);
+      }
+      header .title { font-weight: 700; font-size: 1.05rem; letter-spacing: .01em; }
+      header .bal { font-size: .85rem; opacity: .95; }
+      header .bal b { font-size: 1rem; }
+      .close {
+        background: rgba(255,255,255,.16); border: 0; color: #fff;
+        width: 32px; height: 32px; border-radius: 999px; font-size: 18px; line-height: 1; cursor: pointer;
+      }
+      .wrap { padding: 14px 14px 28px; max-width: 720px; margin: 0 auto; }
+      .lead { color: #aab2c0; font-size: .85rem; margin: 4px 2px 14px; }
+      .offer {
+        display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; align-items: center;
+        background: #171a21; border: 1px solid #232733; border-radius: 16px;
+        padding: 12px 14px; margin-bottom: 12px;
+      }
+      .offer .ic {
+        width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center;
+        font-size: 24px; background: #222838;
+      }
+      .offer h3 { margin: 0 0 2px; font-size: .98rem; }
+      .offer p { margin: 0; color: #8b93a3; font-size: .8rem; }
+      .offer .reward { color: #ffd24a; font-weight: 700; font-size: .82rem; margin-top: 4px; }
+      .go {
+        background: #1565c0; color: #fff; border: 0; border-radius: 999px;
+        padding: .55rem 1rem; font-weight: 700; font-size: .85rem; cursor: pointer; white-space: nowrap;
+      }
+      .go:active { transform: scale(.97); }
+      .go[disabled] { background: #2a8a4a; opacity: 1; }
+      .note { text-align: center; color: #6f7686; font-size: .75rem; margin-top: 18px; }
+      .toast {
+        position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%) translateY(20px);
+        background: #2a8a4a; color: #fff; padding: .6rem 1.1rem; border-radius: 999px;
+        font-weight: 700; font-size: .85rem; opacity: 0; transition: all .25s; pointer-events: none;
+      }
+      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="title">Rewards Center</span>
+      <span class="bal">Balance: <b id="bal">0</b> 🪙</span>
+      <button class="close" id="close" aria-label="Close">×</button>
+    </header>
+
+    <main class="wrap">
+      <p class="lead">Sample offerwall for the ssMob demo. Completing an offer calls the
+        <code>SsmobOfferwall</code> reward bridge back into the app.</p>
+      <div id="offers"></div>
+      <p class="note">Demo only — no real offers. In production this page is your offerwall served from your server.</p>
+    </main>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+      var OFFERS = [
+        { id: "o1", icon: "🎮", title: "Install Puzzle Quest", desc: "Reach level 5", reward: 250 },
+        { id: "o2", icon: "🛒", title: "Sign up at ShopFast", desc: "Complete registration", reward: 120 },
+        { id: "o3", icon: "📺", title: "Watch a 30s trailer", desc: "Finish the video", reward: 40 },
+        { id: "o4", icon: "📝", title: "Quick 3-question survey", desc: "Tell us about your day", reward: 80 },
+        { id: "o5", icon: "💳", title: "Try a free trial", desc: "Start the 7-day trial", reward: 500 }
+      ];
+
+      var bal = 0;
+      var balEl = document.getElementById("bal");
+      var toastEl = document.getElementById("toast");
+
+      function bridge() {
+        // Injected by ssMob's OfferwallActivity. Absent when viewed in a normal browser.
+        return (typeof SsmobOfferwall !== "undefined") ? SsmobOfferwall : null;
+      }
+      function toast(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add("show");
+        setTimeout(function () { toastEl.classList.remove("show"); }, 1600);
+      }
+      function txId() {
+        return "demo-" + Date.now() + "-" + Math.floor(Math.random() * 1e6);
+      }
+
+      function complete(offer, btn) {
+        bal += offer.reward;
+        balEl.textContent = bal;
+        btn.textContent = "Earned ✓";
+        btn.disabled = true;
+        toast("+" + offer.reward + " 🪙 credited");
+        var b = bridge();
+        if (b && b.onReward) b.onReward(offer.reward, "coins", txId());
+      }
+
+      var box = document.getElementById("offers");
+      OFFERS.forEach(function (o) {
+        var el = document.createElement("div");
+        el.className = "offer";
+        el.innerHTML =
+          '<div class="ic">' + o.icon + "</div>" +
+          '<div><h3>' + o.title + "</h3><p>" + o.desc +
+          '</p><div class="reward">+' + o.reward + " coins</div></div>";
+        var btn = document.createElement("button");
+        btn.className = "go";
+        btn.textContent = "Start";
+        btn.onclick = function () { complete(o, btn); };
+        el.appendChild(btn);
+        box.appendChild(el);
+      });
+
+      document.getElementById("close").onclick = function () {
+        var b = bridge();
+        if (b && b.close) b.close(); else history.back();
+      };
+    </script>
+  </body>
+</html>
