@@ -1,9 +1,9 @@
 {
-  "version": "0.1.1",
-  "versionCode": 2,
+  "version": "0.1.2",
+  "versionCode": 3,
   "apk": "weather-alarm.apk",
   "size": 2114861,
   "sizeLabel": "2.0 MB",
-  "sha256": "ac512cc6468fa04ff1c81df2008e68f5ba98d83cb692aaffb7ec09d940befd2d",
+  "sha256": "4c1af113a42e4a5406170711d4c184ed97d8b80866d6057e03b8bd6b4aebb3a2",
   "updated": "2026-06-21"
 }
