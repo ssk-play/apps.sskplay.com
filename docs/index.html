@@ -121,6 +121,44 @@
         color: var(--muted);
         font-size: .9rem;
       }
+
+      footer.site .biz {
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--line);
+        font-size: .8rem;
+        line-height: 1.7;
+        font-style: normal;
+      }
+
+      footer.site .biz .name {
+        font-weight: 600;
+      }
+
+      footer.site .biz dl {
+        margin: .25rem 0 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: .1rem .75rem;
+      }
+
+      footer.site .biz dt {
+        opacity: .7;
+      }
+
+      footer.site .biz dd {
+        margin: 0;
+      }
+
+      @media (max-width: 520px) {
+        footer.site .biz dl {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        footer.site .biz dt {
+          margin-top: .5rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -318,6 +356,19 @@
         <span>© sskplay</span>
         <span><a href="https://feedback.sskplay.com/" target="_blank" rel="noopener">Feedback</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a></span>
       </div>
+      <address class="container biz">
+        <span class="name">sskplay</span>
+        <dl>
+          <dt>Business Registration No.</dt>
+          <dd>172-05-03011</dd>
+          <dt>Address</dt>
+          <dd>222-J79, 30 Namdongseo-ro 236beon-gil, Namdong-gu, Incheon, Republic of Korea</dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:+821033980882">+82 10-3398-0882</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:dev@sskplay.com">dev@sskplay.com</a></dd>
+        </dl>
+      </address>
     </footer>
 
     <!-- GoatCounter analytics (privacy-friendly, no cookies) -->
