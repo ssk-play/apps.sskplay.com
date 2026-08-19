@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Chrome extensions by sskplay</title>
+    <meta name="description" content="Privacy policy for the Chrome Web Store extensions published by sskplay." />
+    <meta property="og:title" content="Privacy Policy — Chrome extensions by sskplay" />
+    <meta property="og:description" content="Privacy policy for the Chrome Web Store extensions published by sskplay." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://apps.sskplay.com/privacy/webstore/" />
+    <link rel="icon" href="/airplay-touch/assets/icon-512.png" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fafafa;
+        --fg: #111;
+        --muted: #6b6b6b;
+        --line: #e5e5e5;
+        --card: #fff;
+        --accent: #0a84ff;
+        --code-bg: #f4f4f5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0b0c;
+          --fg: #f3f3f3;
+          --muted: #9a9a9f;
+          --line: #232326;
+          --card: #141416;
+          --accent: #4ea1ff;
+          --code-bg: #1a1a1d;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .container { max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
+
+      header.site {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      header.site nav a { color: var(--muted); font-size: .9rem; }
+
+      main { padding: 2.5rem 0 3rem; }
+
+      h1 {
+        font-size: clamp(1.6rem, 4vw, 2rem);
+        letter-spacing: -.01em;
+        margin: 0 0 .5rem;
+      }
+      h2 {
+        font-size: 1.15rem;
+        margin: 2.25rem 0 .75rem;
+        padding-bottom: .35rem;
+        border-bottom: 1px solid var(--line);
+        letter-spacing: -.005em;
+      }
+      p, ul { margin: .75rem 0; }
+      ul { padding-left: 1.25rem; }
+      li { margin: .25rem 0; }
+      .meta { color: var(--muted); font-size: .9rem; margin-bottom: 1.25rem; }
+      .meta strong { color: var(--fg); }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        background: var(--code-bg);
+        padding: .1em .4em;
+        border-radius: 4px;
+        font-size: .9em;
+      }
+
+      footer.site {
+        padding: 2rem 0 3rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: .9rem;
+      }
+    </style>
+    <style>
+      /* This page adds tables and a third heading level, which the shared policy
+         page never needed, so the rules live here rather than in the copied base. */
+      h3 { font-size: 1.05rem; margin: 1.75rem 0 .5rem; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0 1.5rem;
+        font-size: .95rem;
+        display: block;
+        overflow-x: auto;
+      }
+      th, td {
+        border: 1px solid var(--line);
+        padding: .55rem .7rem;
+        text-align: left;
+        vertical-align: top;
+      }
+      th { background: var(--code-bg); font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="container">
+        <nav><a href="/">← apps.sskplay.com</a></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Privacy Policy — Chrome extensions</h1>
+
+      <p class="meta">
+        <strong>Effective date:</strong> 2026-08-19 &nbsp;·&nbsp;
+        <strong>Last updated:</strong> 2026-08-19
+      </p>
+
+      <p>This policy covers the browser extensions published by <strong>sskplay</strong>
+      (“we”, “our”) on the Chrome Web Store. It replaces our
+      <a href="/privacy/">general app policy</a> for these items, which describes
+      Android apps and does not reflect how an extension works.</p>
+
+      <p>Extensions covered:</p>
+      <ul>
+        <li><strong>Kaching — Play Order Alerts</strong></li>
+      </ul>
+
+      <h2 id="kaching">Kaching — Play Order Alerts</h2>
+
+      <p>Kaching is a personal notification tool. It has no server, no account, and
+      no operator other than you. It runs entirely inside your browser, using the
+      Google Play Console session you are already signed in to, and sends messages
+      through a Telegram bot that you create and control.</p>
+
+      <h3>What it accesses</h3>
+
+      <table>
+        <thead>
+          <tr><th>Data</th><th>Why</th><th>Where it goes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Your Google Play Console session cookie (<code>SAPISID</code>)</td>
+            <td>To sign the request to Google’s own orders endpoint, exactly as the
+                Play Console page does when you open it yourself</td>
+            <td><strong>Never leaves your browser.</strong> The cookie value is not
+                transmitted; only a one-way SHA-1 hash of it is sent to Google, which
+                is the authentication scheme Google’s own Console uses</td>
+          </tr>
+          <tr>
+            <td>Order records from your Play Console — order ID, product name,
+                package name, buyer country, amount, payout, timestamp, and whether
+                the order was charged or refunded</td>
+            <td>To build the notification text</td>
+            <td>Only to the Telegram bot <strong>you</strong> configured</td>
+          </tr>
+          <tr>
+            <td>Your Telegram bot token and chat ID</td>
+            <td>To deliver the notification</td>
+            <td>Stored locally in your browser; sent only to
+                <code>api.telegram.org</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>What it does not do</h3>
+
+      <ul>
+        <li>No analytics, telemetry, tracking, or crash reporting.</li>
+        <li>No data reaches us, the developer, or any third party we control. We
+            operate no server for this extension and receive nothing from it.</li>
+        <li>Nothing is transmitted anywhere except Google — the same request you
+            would make by opening the Console yourself — and the Telegram bot you
+            chose.</li>
+        <li>No data is sold, rented, or shared. No advertising.</li>
+        <li>It reads only your orders page. It never modifies anything in your Play
+            Console account.</li>
+      </ul>
+
+      <h3>Permissions and why each is requested</h3>
+
+      <table>
+        <thead>
+          <tr><th>Permission</th><th>Reason</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>alarms</code></td>
+              <td>Schedules the periodic check.</td></tr>
+          <tr><td><code>storage</code></td>
+              <td>Stores your settings and the list of order IDs already announced,
+                  so the same order is not sent twice.</td></tr>
+          <tr><td><code>cookies</code></td>
+              <td>Reads the <code>SAPISID</code> cookie for play.google.com to sign
+                  the request to Google’s orders endpoint. The value itself is never
+                  transmitted — only a one-way hash, as described above.</td></tr>
+          <tr><td><code>declarativeNetRequest</code></td>
+              <td>Sets the <code>Origin</code> header on the extension’s own request
+                  to that endpoint. Google validates the request signature against
+                  this header, so it has to match play.google.com.</td></tr>
+          <tr><td>Host: <code>play.google.com</code></td>
+              <td>Reads the session cookie used to sign the request.</td></tr>
+          <tr><td>Host: <code>playconsolemonetization-pa.clients6.google.com</code></td>
+              <td>The Play Console orders endpoint the extension reads from.</td></tr>
+          <tr><td>Host: <code>api.telegram.org</code></td>
+              <td>Delivers the notification to the bot you configured.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Where data is stored</h3>
+
+      <p>In <code>chrome.storage.local</code> on your own machine. Uninstalling the
+      extension removes it. <strong>Reset history</strong> in the extension’s
+      settings clears the record of orders already announced. Order details are not
+      retained beyond a rolling list of recently seen order IDs, kept locally for
+      the sole purpose of not announcing the same order twice.</p>
+
+      <h3>Third parties</h3>
+
+      <p>Messages are delivered through <strong>Telegram</strong> using a bot you
+      create. Once delivered, those messages are governed by
+      <a href="https://telegram.org/privacy" rel="noopener">Telegram’s privacy
+      policy</a>. You can revoke the bot at any time with <code>/revoke</code> in
+      @BotFather, which immediately stops delivery.</p>
+
+      <p>Order data is read from <strong>Google Play Console</strong> under your own
+      signed-in session, governed by
+      <a href="https://policies.google.com/privacy" rel="noopener">Google’s privacy
+      policy</a>.</p>
+
+      <h2 id="children">Children’s privacy</h2>
+
+      <p>These extensions are developer tools intended for adults operating a Google
+      Play developer account. They are not directed at children and we do not
+      knowingly collect information from children.</p>
+
+      <h2 id="changes">Changes to this policy</h2>
+
+      <p>We may update this policy from time to time. When we do, we will update the
+      “Last updated” date at the top of this page.</p>
+
+      <h2 id="contact">Contact</h2>
+
+      <ul>
+        <li><strong>Developer:</strong> sskplay</li>
+        <li><strong>Email:</strong> <a href="mailto:dev@sskplay.com">dev@sskplay.com</a></li>
+        <li><strong>Website:</strong> <a href="https://apps.sskplay.com/">apps.sskplay.com</a></li>
+      </ul>
+    </main>
+
+    <footer class="site">
+      <div class="container">
+        <p class="meta">© sskplay</p>
+      </div>
+    </footer>
+  </body>
+</html>
