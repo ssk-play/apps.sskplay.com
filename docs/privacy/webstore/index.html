@@ -120,7 +120,7 @@
 
       <p class="meta">
         <strong>Effective date:</strong> 2026-08-19 &nbsp;·&nbsp;
-        <strong>Last updated:</strong> 2026-08-19
+        <strong>Last updated:</strong> 2026-08-22
       </p>
 
       <p>This policy covers the browser extensions published by <strong>sskplay</strong>
@@ -168,6 +168,15 @@
             <td>Stored locally in your browser; sent only to
                 <code>api.telegram.org</code></td>
           </tr>
+          <tr>
+            <td>Messages sent to your bot</td>
+            <td>To answer the <code>/today</code>, <code>/week</code> and
+                <code>/month</code> commands</td>
+            <td>Read from <code>api.telegram.org</code> on a recurring check. Only
+                messages from the chat you configured are acted on; anything else is
+                discarded beyond the chat’s name and ID, which are kept locally so
+                the <strong>Find chat ID</strong> button still works</td>
+          </tr>
         </tbody>
       </table>
 
@@ -195,8 +204,10 @@
           <tr><td><code>alarms</code></td>
               <td>Schedules the periodic check.</td></tr>
           <tr><td><code>storage</code></td>
-              <td>Stores your settings and the list of order IDs already announced,
-                  so the same order is not sent twice.</td></tr>
+              <td>Stores your settings, the list of order IDs already announced so
+                  the same order is not sent twice, the per-day tallies behind the
+                  running totals, and the exchange rates read off your own settled
+                  orders.</td></tr>
           <tr><td><code>cookies</code></td>
               <td>Reads the <code>SAPISID</code> cookie for play.google.com to sign
                   the request to Google’s orders endpoint. The value itself is never
@@ -218,9 +229,16 @@
 
       <p>In <code>chrome.storage.local</code> on your own machine. Uninstalling the
       extension removes it. <strong>Reset history</strong> in the extension’s
-      settings clears the record of orders already announced. Order details are not
-      retained beyond a rolling list of recently seen order IDs, kept locally for
-      the sole purpose of not announcing the same order twice.</p>
+      settings clears all of it.</p>
+
+      <p>Individual order records are not retained. What is kept is a rolling list
+      of recently seen order IDs, so the same order is not announced twice; a tally
+      per day of amounts, order counts and refund counts, holding roughly a year of
+      days, which is what the running totals and the <code>/today</code>,
+      <code>/week</code> and <code>/month</code> commands are answered from; the
+      exchange rates read off your own settled orders, so a figure can be shown in
+      the currency you are paid in; and the name and ID of chats that have messaged
+      your bot. None of it leaves your machine.</p>
 
       <h3>Third parties</h3>
 
