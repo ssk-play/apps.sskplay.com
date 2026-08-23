@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AudioCast — stream your Mac or Windows audio to an Android phone over Wi-Fi</title>
-    <meta name="description" content="AudioCast streams your Mac or Windows system audio to your Android phone over Wi-Fi. No cables, no Bluetooth pairing, low latency — turn any Android into a wireless speaker for your computer." />
+    <title>AudioCast — stream your Mac or Windows audio to your phone over Wi-Fi</title>
+    <meta name="description" content="AudioCast streams your Mac or Windows system audio to your phone over Wi-Fi. No cables, no Bluetooth pairing, low latency — turn your Android, iPhone, or iPad into a wireless speaker for your computer." />
     <meta property="og:title" content="AudioCast" />
-    <meta property="og:description" content="Stream your Mac or Windows audio to your Android phone over Wi-Fi. No cables, low latency." />
+    <meta property="og:description" content="Stream your Mac or Windows audio to your phone over Wi-Fi. No cables, low latency." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://apps.sskplay.com/audiocast/" />
     <meta property="og:image" content="https://apps.sskplay.com/audiocast/assets/01-connected.webp" />
@@ -17,7 +17,7 @@
     <meta property="og:video:height" content="1280" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="AudioCast" />
-    <meta name="twitter:description" content="Stream your Mac or Windows audio to your Android phone over Wi-Fi. No cables, low latency." />
+    <meta name="twitter:description" content="Stream your Mac or Windows audio to your phone over Wi-Fi. No cables, low latency." />
     <meta name="twitter:image" content="https://apps.sskplay.com/audiocast/assets/01-connected.webp" />
     <link rel="icon" href="assets/icon-512.png" />
     <style>
@@ -109,6 +109,13 @@
         border-color: transparent;
       }
       .btn.primary:hover { text-decoration: none; opacity: .92; }
+      /* Not a link: the App Store page 404s until Apple approves the build. */
+      .btn.pending {
+        border-style: dashed;
+        color: var(--muted);
+        font-weight: 500;
+        cursor: default;
+      }
 
       section { padding: 2rem 0; border-top: 1px solid var(--line); }
       section h2 {
@@ -248,12 +255,17 @@
         <img class="icon" src="assets/icon-512.png" alt="AudioCast icon" width="96" height="96" />
         <div>
           <h1>AudioCast</h1>
-          <p class="tagline">Stream your Mac or Windows audio to your Android phone over Wi-Fi. No cables, low latency.</p>
+          <p class="tagline">Stream your Mac or Windows audio to your phone over Wi-Fi. No cables, low latency.</p>
         </div>
       </section>
 
       <div class="cta">
         <a class="btn primary" href="https://play.google.com/store/apps/details?id=audio.cast">Get it on Google Play</a>
+        <!-- TODO: once Apple approves, swap this span for
+             <a class="btn" href="https://apps.apple.com/app/id6803944759">Get it on the App Store</a>
+             (Apple ID 6803944759, bundle com.audiocast.receiver). Until then the
+             store URL 404s, so it must not be a link. -->
+        <span class="btn pending" title="Submitted to the App Store, waiting on review">iPhone &amp; iPad — in review</span>
         <a class="btn" href="#demo">
           <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M5 3.4v9.2l7.5-4.6z" /></svg>
           Watch the demo
@@ -322,6 +334,19 @@
               Package: <code>audio.cast</code>
             </p>
           </div>
+          <div class="install-card" id="install-ios">
+            <h3>iPhone &amp; iPad</h3>
+            <p style="color: var(--muted); margin: 0;">The iOS receiver has been submitted to the App Store and is
+            waiting on Apple's review. It is not downloadable yet — this page gets the
+            link the day it is approved.</p>
+            <p style="margin-top: .9rem;">
+              <!-- TODO: replace with the live App Store button on approval. See the CTA comment above. -->
+              <span class="btn pending">Coming soon</span>
+            </p>
+            <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
+              Bundle: <code>com.audiocast.receiver</code>
+            </p>
+          </div>
           <div class="install-card" id="install-mac">
             <h3>macOS sender</h3>
             <p style="color: var(--muted); margin: 0;">Required to capture and send your Mac's system audio. Install with Homebrew:</p>
@@ -356,7 +381,7 @@ brew install --cask audiocast</code></pre>
       <section>
         <h2>Requirements</h2>
         <ul class="req">
-          <li>Android 8.0 or later</li>
+          <li>Android 8.0 or later, or iOS 17.0 or later (iPhone and iPad) once the App Store release is live</li>
           <li>A Mac (macOS 14+) or a Windows 10/11 PC for the sender app</li>
           <li>Both devices on the same Wi-Fi network</li>
         </ul>
