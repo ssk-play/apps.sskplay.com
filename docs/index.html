@@ -89,7 +89,7 @@
         transform: translateY(-2px);
         border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
       }
-      .card img.icon {
+      .card :is(img, svg).icon {
         width: 56px; height: 56px;
         border-radius: 13px;
         flex-shrink: 0;
@@ -192,6 +192,19 @@
             <div class="meta">
               <h3>Monogame Studio</h3>
               <p>Make tiny games on your phone. Describe an idea, Code Buddy writes the Lua, play it instantly.</p>
+            </div>
+          </a>
+          <a class="card" href="/crtcrown/">
+            <!-- TODO: no icon asset yet; using the inline placeholder mark from the app page. -->
+            <svg class="icon" viewBox="0 0 96 96" width="56" height="56" role="img" aria-label="CrtCrown icon placeholder">
+              <rect width="96" height="96" rx="22" fill="#1a1a1d" />
+              <rect x="18" y="24" width="60" height="44" rx="10" fill="none" stroke="#4ea1ff" stroke-width="3" />
+              <path d="M26 34h44M26 40h44M26 46h44M26 52h44M26 58h44" stroke="#4ea1ff" stroke-width="1.5" opacity=".45" />
+              <path d="M40 74h16" stroke="#4ea1ff" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <div class="meta">
+              <h3>CrtCrown</h3>
+              <p>A CRT monitor frame for your Mac. Live scanlines, barrel distortion, and bloom on the window underneath.</p>
             </div>
           </a>
           <a class="card" href="/airplay-touch/">

@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CrtCrown — a CRT monitor frame that sits on your Mac screen</title>
+    <meta name="description" content="CrtCrown puts a CRT monitor frame on your Mac desktop and applies live scanlines, barrel distortion, and bloom to the window underneath it." />
+    <meta property="og:title" content="CrtCrown" />
+    <meta property="og:description" content="A CRT monitor frame for your Mac, with live scanlines, barrel distortion, and bloom on the window underneath." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://apps.sskplay.com/crtcrown/" />
+    <!-- TODO: no app icon exists yet. Once one does, add assets/icon-512.png,
+         link it as the favicon, add an og:image, and replace the inline SVG
+         placeholder in the hero below. -->
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fafafa;
+        --fg: #111;
+        --muted: #6b6b6b;
+        --line: #e5e5e5;
+        --card: #fff;
+        --accent: #0a84ff;
+        --code-bg: #f4f4f5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0b0c;
+          --fg: #f3f3f3;
+          --muted: #9a9a9f;
+          --line: #232326;
+          --card: #141416;
+          --accent: #4ea1ff;
+          --code-bg: #1a1a1d;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .container { max-width: 920px; margin: 0 auto; padding: 0 1.25rem; }
+
+      header.site {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      header.site nav a { color: var(--muted); font-size: .9rem; }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 1.25rem;
+        align-items: center;
+        padding: 3rem 0 2rem;
+      }
+      .hero .icon {
+        width: 96px; height: 96px;
+        border-radius: 22px;
+        box-shadow: 0 4px 20px rgba(0,0,0,.08);
+        display: block;
+      }
+      .hero h1 {
+        margin: 0 0 .25rem;
+        font-size: clamp(1.6rem, 4vw, 2.25rem);
+        letter-spacing: -.01em;
+      }
+      .hero p.tagline {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .75rem;
+        margin: 1.25rem 0 1.5rem;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        padding: .65rem 1.1rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: .95rem;
+        border: 1px solid var(--line);
+        background: var(--card);
+        color: var(--fg);
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: white;
+        border-color: transparent;
+      }
+      .btn.primary:hover { text-decoration: none; opacity: .92; }
+      .meta-line { color: var(--muted); font-size: .9rem; }
+
+      .callout {
+        display: flex;
+        gap: .75rem;
+        align-items: flex-start;
+        padding: .9rem 1.1rem;
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--accent);
+        border-radius: 10px;
+        background: var(--card);
+        margin: 0 0 3rem;
+        font-size: .95rem;
+      }
+      .callout svg { width: 18px; height: 18px; flex: none; margin-top: .15rem; color: var(--accent); }
+      .callout p { margin: 0; }
+      .callout p + p { margin-top: .4rem; color: var(--muted); font-size: .9rem; }
+
+      section { padding: 2rem 0; border-top: 1px solid var(--line); }
+      section h2 {
+        font-size: 1.1rem;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 1rem;
+      }
+      section h3 {
+        font-size: 1.05rem;
+        margin: 0 0 .25rem;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+      .feature {
+        padding: 1rem 1.1rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+      }
+      .feature p { margin: .25rem 0 0; color: var(--muted); font-size: .95rem; }
+
+      .shot-placeholder {
+        border: 1px dashed var(--line);
+        border-radius: 14px;
+        background: var(--card);
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 3rem 1.25rem;
+        font-size: .9rem;
+      }
+
+      .install-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      @media (min-width: 720px) {
+        .install-grid { grid-template-columns: 1fr 1fr; }
+      }
+      .install-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+        padding: 1.25rem;
+      }
+      .install-card h3 { margin-bottom: .5rem; }
+      .install-card ol { padding-left: 1.1rem; margin: .5rem 0 0; color: var(--muted); }
+      .install-card ol li { margin: .35rem 0; }
+
+      dl.release {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: .35rem 1rem;
+        margin: 0;
+        font-size: .95rem;
+      }
+      dl.release dt { color: var(--muted); }
+      dl.release dd { margin: 0; }
+      @media (max-width: 520px) {
+        dl.release { grid-template-columns: 1fr; gap: 0; }
+        dl.release dt { margin-top: .6rem; }
+      }
+
+      .tier {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      @media (min-width: 720px) {
+        .tier { grid-template-columns: 1fr 1fr; }
+      }
+      .tier ul { margin: .5rem 0 0; padding-left: 1.1rem; color: var(--muted); }
+      .tier ul li { margin: .25rem 0; }
+
+      pre, code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: .9rem;
+      }
+      pre {
+        background: var(--code-bg);
+        padding: .85rem 1rem;
+        border-radius: 10px;
+        overflow-x: auto;
+        margin: .75rem 0 0;
+      }
+      code { background: var(--code-bg); padding: .1em .4em; border-radius: 4px; }
+      pre code { background: transparent; padding: 0; }
+      pre.hash code { word-break: break-all; white-space: pre-wrap; }
+
+      .copy-block { position: relative; }
+      .copy-block pre { padding-right: 3rem; }
+      .copy-btn {
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: .35rem;
+        padding: .3rem .55rem;
+        font: 600 .75rem/1 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        color: var(--muted);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: .85;
+        transition: opacity .15s ease, color .15s ease, border-color .15s ease;
+      }
+      .copy-btn:hover { opacity: 1; color: var(--fg); }
+      .copy-btn.copied { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+      .copy-btn svg { width: 14px; height: 14px; }
+
+      ul.req { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+      ul.req li { margin: .25rem 0; }
+
+      footer.site {
+        margin-top: 2rem;
+        padding: 2rem 0 3rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: .9rem;
+      }
+      footer.site .row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: .5rem;
+      }
+      footer.site .biz {
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--line);
+        font-size: .8rem;
+        line-height: 1.7;
+        font-style: normal;
+      }
+      footer.site .biz .name { font-weight: 600; }
+      footer.site .biz dl {
+        margin: .25rem 0 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: .1rem .75rem;
+      }
+      footer.site .biz dt { opacity: .7; }
+      footer.site .biz dd { margin: 0; }
+      @media (max-width: 520px) {
+        footer.site .biz dl { grid-template-columns: 1fr; gap: 0; }
+        footer.site .biz dt { margin-top: .5rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="container">
+        <nav><a href="/">← apps.sskplay.com</a></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero" style="border: 0; padding-top: 3rem;">
+        <!-- TODO: placeholder mark — replace with assets/icon-512.png when the app icon exists. -->
+        <svg class="icon" viewBox="0 0 96 96" role="img" aria-label="CrtCrown icon placeholder">
+          <rect width="96" height="96" rx="22" fill="#1a1a1d" />
+          <rect x="18" y="24" width="60" height="44" rx="10" fill="none" stroke="#4ea1ff" stroke-width="3" />
+          <path d="M26 34h44M26 40h44M26 46h44M26 52h44M26 58h44" stroke="#4ea1ff" stroke-width="1.5" opacity=".45" />
+          <path d="M40 74h16" stroke="#4ea1ff" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <div>
+          <h1>CrtCrown</h1>
+          <p class="tagline">A CRT monitor frame that sits on your Mac screen, with live scanlines, barrel distortion, and bloom on the window underneath.</p>
+        </div>
+      </section>
+
+      <div class="cta">
+        <!-- TODO: repoint if the release tag changes. Asset lives on the GitHub release, not in this repo. -->
+        <a class="btn primary" href="https://github.com/ssk-play/apps.sskplay.com/releases/download/crtcrown-v1.0.0/CrtCrown-1.0.0.dmg">Download for macOS</a>
+        <span class="meta-line">Version 1.0.0 &nbsp;·&nbsp; 678 KB &nbsp;·&nbsp; 2026-08-23</span>
+      </div>
+
+      <div class="callout">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="8" cy="8" r="6.5" />
+          <path d="M8 5v3.5M8 11h.01" stroke-linecap="round" />
+        </svg>
+        <div>
+          <p><strong>CrtCrown needs Screen Recording permission</strong> — it reads the pixels of the window beneath the frame in order to draw the CRT effect on them. macOS will ask on first launch.</p>
+          <p>Nothing captured ever leaves your Mac: the pixels go straight to the on-device renderer and are never written to disk or sent anywhere.</p>
+        </div>
+      </div>
+
+      <section>
+        <h2>What it is</h2>
+        <p style="margin-top: 0;">CrtCrown draws a CRT monitor frame as a floating window on your desktop. Anything
+        that sits under it — a terminal, an emulator, a video, a text editor — is
+        re-rendered in real time through a Metal shader that adds the things a
+        cathode-ray tube did to a picture: scanlines, a curved glass bulge, glow
+        around bright pixels, and a slight bloom that spills into the dark.</p>
+        <p>It is a display effect, not a video filter. The window underneath keeps
+        working normally — you can type in it, scroll it, and click through it while
+        it looks like it is coming out of a 1987 monitor.</p>
+      </section>
+
+      <section>
+        <h2>Features</h2>
+        <div class="features">
+          <div class="feature">
+            <h3>Real-time CRT shader</h3>
+            <p>Scanlines, barrel distortion, and bloom applied live through Metal — not a static overlay image.</p>
+          </div>
+          <div class="feature">
+            <h3>Window binding</h3>
+            <p>Bind the frame to a specific window so it follows that window as you move it around.</p>
+          </div>
+          <div class="feature">
+            <h3>Seven presets</h3>
+            <p>From a clean Classic CRT to a blown-out Cyberpunk look. Switch between them from the control bar.</p>
+          </div>
+          <div class="feature">
+            <h3>Runs on anything current</h3>
+            <p>Apple Silicon and Intel, macOS 14 or later. Signed with a Developer ID and notarized by Apple.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Screenshots</h2>
+        <!-- TODO: no screenshot or GIF assets captured yet. Replace this placeholder
+             with the .shots grid used on the other app pages once they exist. -->
+        <div class="shot-placeholder">Screenshots coming soon.</div>
+      </section>
+
+      <section id="download">
+        <h2>Download</h2>
+        <div class="install-grid">
+          <div class="install-card">
+            <h3>This release</h3>
+            <dl class="release">
+              <dt>Version</dt><dd>1.0.0</dd>
+              <dt>Released</dt><dd>2026-08-23</dd>
+              <dt>File</dt><dd><code>CrtCrown-1.0.0.dmg</code></dd>
+              <dt>Size</dt><dd>678 KB</dd>
+              <dt>Signing</dt><dd>Developer ID, notarized and stapled</dd>
+            </dl>
+            <p style="margin-top: 1rem;">
+              <a class="btn primary" href="https://github.com/ssk-play/apps.sskplay.com/releases/download/crtcrown-v1.0.0/CrtCrown-1.0.0.dmg">Download DMG</a>
+            </p>
+          </div>
+          <div class="install-card">
+            <h3>Install</h3>
+            <ol>
+              <li>Open the downloaded DMG.</li>
+              <li>Drag CrtCrown to your Applications folder.</li>
+              <li>Launch it and allow <strong>Screen Recording</strong> when macOS asks.</li>
+            </ol>
+            <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
+              Optional: the window-binding feature also asks for <strong>Accessibility</strong>
+              permission, which lets CrtCrown move a bound window. Everything else works
+              without it.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 2rem; font-size: .95rem;">SHA-256 checksum</h3>
+        <p style="color: var(--muted); font-size: .9rem; margin-top: .25rem;">
+          Verify your download with <code>shasum -a 256 CrtCrown-1.0.0.dmg</code> and compare:
+        </p>
+        <div class="copy-block">
+<pre class="hash" id="sha256"><code>b8cc1b5164bf2d13c26ed27d41d065d46dadd6fbf2cc6af72dcde34ddcf334c6</code></pre>
+          <button class="copy-btn" type="button" data-copy-target="sha256" aria-label="Copy SHA-256 checksum">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="4" y="4" width="9" height="10" rx="1.5" />
+              <path d="M3 11V3a1 1 0 0 1 1-1h7" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="license">
+        <h2>Trial and licensing</h2>
+        <p style="margin-top: 0;">CrtCrown is free to try for <strong>7 days</strong>, with every preset
+        unlocked. After the trial ends the app keeps working — three presets stay
+        free forever, and the four premium presets need a license key.</p>
+
+        <div class="tier">
+          <div class="install-card">
+            <h3>Free forever</h3>
+            <ul>
+              <li>Classic CRT</li>
+              <li>Warm Amber</li>
+              <li>Green Terminal</li>
+            </ul>
+          </div>
+          <div class="install-card">
+            <h3>Premium presets</h3>
+            <ul>
+              <li>80s TV</li>
+              <li>Arcade Cabinet</li>
+              <li>VHS Tape</li>
+              <li>Cyberpunk</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.25rem;">
+          <!-- TODO: placeholder checkout URL. This matches LicenseConfig.purchaseURL in
+               LicenseManager.swift, but the Lemon Squeezy product has not been created
+               yet — confirm the real URL and update both places together. -->
+          <a class="btn primary" href="https://sskplay.lemonsqueezy.com/buy/crtcrown">Buy a license key</a>
+        </p>
+        <p style="color: var(--muted); font-size: .9rem;">
+          After buying, the key arrives by email. Enter it in the app under
+          <strong>menu &gt; License…</strong> to unlock the premium presets. One key
+          activates the app, and a licensed copy keeps working offline.
+        </p>
+      </section>
+
+      <section>
+        <h2>Requirements</h2>
+        <ul class="req">
+          <li>macOS 14.0 or later</li>
+          <li>Apple Silicon or Intel Mac</li>
+          <li>Screen Recording permission, granted on first launch</li>
+          <li>Distributed outside the Mac App Store — signed with a Developer ID and notarized by Apple, so Gatekeeper opens it without warnings</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site">
+      <div class="container">
+        <div class="row">
+          <span>© sskplay</span>
+          <span><a href="https://feedback.sskplay.com/?product=crtcrown" target="_blank" rel="noopener">Feedback</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/">All apps</a></span>
+        </div>
+      </div>
+      <address class="container biz">
+        <span class="name">sskplay</span>
+        <dl>
+          <dt>Business Registration No.</dt>
+          <dd>172-05-03011</dd>
+          <dt>Address</dt>
+          <dd>222-J79, 30 Namdongseo-ro 236beon-gil, Namdong-gu, Incheon 21632, Republic of Korea</dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:+821033980882">+82 10-3398-0882</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:dev@sskplay.com">dev@sskplay.com</a></dd>
+        </dl>
+      </address>
+    </footer>
+
+    <script>
+      document.querySelectorAll('.copy-btn[data-copy-target]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const target = document.getElementById(btn.dataset.copyTarget);
+          if (!target) return;
+          const text = target.innerText.trim();
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch {
+            const r = document.createRange();
+            r.selectNodeContents(target);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(r);
+            try { document.execCommand('copy'); } catch {}
+            sel.removeAllRanges();
+          }
+          const label = btn.querySelector('span');
+          const original = label.textContent;
+          label.textContent = 'Copied';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            label.textContent = original;
+            btn.classList.remove('copied');
+          }, 1500);
+        });
+      });
+    </script>
+  </body>
+</html>
