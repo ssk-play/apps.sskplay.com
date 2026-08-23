@@ -109,13 +109,6 @@
         border-color: transparent;
       }
       .btn.primary:hover { text-decoration: none; opacity: .92; }
-      /* Not a link: the App Store page 404s until Apple approves the build. */
-      .btn.pending {
-        border-style: dashed;
-        color: var(--muted);
-        font-weight: 500;
-        cursor: default;
-      }
 
       section { padding: 2rem 0; border-top: 1px solid var(--line); }
       section h2 {
@@ -261,11 +254,10 @@
 
       <div class="cta">
         <a class="btn primary" href="https://play.google.com/store/apps/details?id=audio.cast">Get it on Google Play</a>
-        <!-- TODO: once Apple approves, swap this span for
-             <a class="btn" href="https://apps.apple.com/app/id6803944759">Get it on the App Store</a>
-             (Apple ID 6803944759, bundle com.audiocast.receiver). Until then the
-             store URL 404s, so it must not be a link. -->
-        <span class="btn pending" title="Submitted to the App Store, waiting on review">iPhone &amp; iPad — in review</span>
+        <!-- Apple ID 6803944759 is already assigned, so this URL is final and will
+             not change. It 404s until Apple approves the build — deliberate: the link
+             goes live by itself the moment review passes, with no edit here. -->
+        <a class="btn" href="https://apps.apple.com/app/id6803944759">Get it on the App Store</a>
         <a class="btn" href="#demo">
           <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M5 3.4v9.2l7.5-4.6z" /></svg>
           Watch the demo
@@ -336,12 +328,10 @@
           </div>
           <div class="install-card" id="install-ios">
             <h3>iPhone &amp; iPad</h3>
-            <p style="color: var(--muted); margin: 0;">The iOS receiver has been submitted to the App Store and is
-            waiting on Apple's review. It is not downloadable yet — this page gets the
-            link the day it is approved.</p>
+            <p style="color: var(--muted); margin: 0;">Install from the App Store. The iOS receiver is in review —
+            the link opens as soon as Apple approves it.</p>
             <p style="margin-top: .9rem;">
-              <!-- TODO: replace with the live App Store button on approval. See the CTA comment above. -->
-              <span class="btn pending">Coming soon</span>
+              <a class="btn primary" href="https://apps.apple.com/app/id6803944759">Open in App Store</a>
             </p>
             <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
               Bundle: <code>com.audiocast.receiver</code>
