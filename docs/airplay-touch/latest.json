@@ -1,0 +1,10 @@
+{
+  "version": "1.5.21",
+  "zip": "https://github.com/jobtools/homebrew-tap/releases/download/airplay-touch-v1.5.21/AirPlay-Touch-1.5.21.zip",
+  "url": "https://github.com/jobtools/homebrew-tap/releases/download/airplay-touch-v1.5.21/AirPlay-Touch-1.5.21.zip",
+  "size": 21330780,
+  "sizeLabel": "20.3 MB",
+  "sha256": "d013365d5dc61e667833cb24bcc002ea64284e882af9cebf192aa53301b748a2",
+  "minimumSystemVersion": "15.0",
+  "updated": "2026-08-21"
+}

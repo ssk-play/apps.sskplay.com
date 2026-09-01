@@ -176,6 +176,30 @@
 
       .copy-block { position: relative; }
       .copy-block pre { padding-right: 3rem; }
+      /* Author `display` beats the UA stylesheet's `[hidden] { display: none }`,
+         so without this the metadata grid renders empty-but-visible whenever
+         latest.json has not loaded. */
+      [hidden] { display: none !important; }
+      /* The grid lives on each dt/dd pair rather than on the <dl> itself:
+         changing a dl's own display drops the description-list role in Safari
+         and VoiceOver, which is what ties each label to its value. */
+      dl.release { display: block; margin: .9rem 0 0; font-size: .9rem; }
+      dl.release > div {
+        display: grid;
+        grid-template-columns: 6.5rem 1fr;
+        gap: 1rem;
+        margin-bottom: .35rem;
+      }
+      dl.release dt { color: var(--muted); }
+      dl.release dd { margin: 0; }
+      @media (max-width: 520px) {
+        dl.release > div { grid-template-columns: 1fr; gap: 0; margin-bottom: .6rem; }
+      }
+      details.alt-install, details.checksum { margin-top: .9rem; font-size: .85rem; }
+      details.alt-install summary, details.checksum summary { color: var(--muted); cursor: pointer; }
+      details.alt-install > div, details.checksum > div { margin-top: .5rem; }
+      details.alt-install pre { font-size: .85rem; }
+      pre.hash code { word-break: break-all; white-space: pre-wrap; }
       .copy-btn {
         position: absolute;
         top: .5rem;
@@ -231,7 +255,7 @@
 
       <div class="cta">
         <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.airplaytouch">Get it on Google Play</a>
-        <a class="btn" href="#install-mac">macOS companion install</a>
+        <a class="btn" href="#install-mac">Download for macOS</a>
       </div>
 
       <section>
@@ -289,18 +313,45 @@
           </div>
           <div class="install-card" id="install-mac">
             <h3>macOS companion</h3>
-            <p style="color: var(--muted); margin: 0;">Required for touch interaction on the mirrored screen. Install with Homebrew:</p>
-            <div class="copy-block">
+            <p style="color: var(--muted); margin: 0;">Required for touch interaction on the mirrored screen.</p>
+            <p style="margin-top: .9rem;">
+              <a class="btn primary" id="dl-link" href="https://github.com/jobtools/homebrew-tap/releases">Download for macOS</a>
+            </p>
+            <!-- Filled from latest.json, which ./release-mac rewrites on every
+                 release. Hidden until then: a version number frozen into this
+                 page is a promise it stops keeping the moment we ship again. -->
+            <dl class="release" id="dl-meta" hidden></dl>
+            <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
+              Unzip it and drag <strong>AirPlay Touch</strong> to your Applications folder.
+            </p>
+            <details class="alt-install">
+              <summary>Prefer Homebrew?</summary>
+              <div class="copy-block">
 <pre id="brew-cmd"><code>brew tap jobtools/tap
+brew trust --tap jobtools/tap
 brew install --cask airplay-touch</code></pre>
-              <button class="copy-btn" type="button" data-copy-target="brew-cmd" aria-label="Copy install command">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <rect x="4" y="4" width="9" height="10" rx="1.5" />
-                  <path d="M3 11V3a1 1 0 0 1 1-1h7" />
-                </svg>
-                <span>Copy</span>
-              </button>
-            </div>
+                <button class="copy-btn" type="button" data-copy-target="brew-cmd" aria-label="Copy install command">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <rect x="4" y="4" width="9" height="10" rx="1.5" />
+                    <path d="M3 11V3a1 1 0 0 1 1-1h7" />
+                  </svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </details>
+            <details class="checksum" id="dl-checksum" hidden>
+              <summary>SHA-256 checksum</summary>
+              <div class="copy-block">
+<pre class="hash" id="sha256"><code id="dl-sha"></code></pre>
+                <button class="copy-btn" type="button" data-copy-target="sha256" aria-label="Copy SHA-256 checksum">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <rect x="4" y="4" width="9" height="10" rx="1.5" />
+                    <path d="M3 11V3a1 1 0 0 1 1-1h7" />
+                  </svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </details>
           </div>
         </div>
       </section>
@@ -309,7 +360,7 @@ brew install --cask airplay-touch</code></pre>
         <h2>Requirements</h2>
         <ul class="req">
           <li>Android 7.0 or later</li>
-          <li>For touch interaction: a Mac running macOS 14 or later, on the same Wi-Fi</li>
+          <li>For touch interaction: a Mac running macOS 15 or later, on the same Wi-Fi</li>
           <li>DRM-protected content (Apple TV+, Netflix, etc.) cannot be mirrored — this is enforced by the source device</li>
         </ul>
       </section>
@@ -323,6 +374,46 @@ brew install --cask airplay-touch</code></pre>
     </footer>
 
     <script>
+      // The download button points at the releases list until latest.json says
+      // otherwise, so a fetch that fails still leaves a working way to get the
+      // app rather than a dead button.
+      fetch('latest.json', { cache: 'no-cache' })
+        .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then((d) => {
+          const url = d.zip || d.url;
+          if (!url) return;
+          document.getElementById('dl-link').href = url;
+
+          // Only rows the file actually carries. A hand-written latest.json
+          // missing a field should drop that row, not print "undefined" — and
+          // the OS floor is the one value on this card nobody should guess at.
+          const rows = [
+            ['Version', d.version],
+            ['Released', d.updated],
+            ['Size', d.sizeLabel],
+            ['Requires', d.minimumSystemVersion && 'macOS ' + d.minimumSystemVersion + ' or later'],
+            ['Signing', 'Developer ID, notarized and stapled'],
+          ];
+          const dl = document.getElementById('dl-meta');
+          for (const [label, value] of rows) {
+            if (!value) continue;
+            const dt = document.createElement('dt');
+            dt.textContent = label;
+            const dd = document.createElement('dd');
+            dd.textContent = value;
+            const row = document.createElement('div');
+            row.append(dt, dd);
+            dl.append(row);
+          }
+          if (dl.children.length) dl.hidden = false;
+
+          if (d.sha256) {
+            document.getElementById('dl-sha').textContent = d.sha256;
+            document.getElementById('dl-checksum').hidden = false;
+          }
+        })
+        .catch(() => {});
+
       document.querySelectorAll('.copy-btn[data-copy-target]').forEach((btn) => {
         btn.addEventListener('click', async () => {
           const target = document.getElementById(btn.dataset.copyTarget);
