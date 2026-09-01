@@ -324,7 +324,9 @@
             <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
               Unzip it and drag <strong>AirPlay Touch</strong> to your Applications folder.
             </p>
-            <details class="alt-install">
+            <!-- Open by default: Homebrew is the better install for anyone who
+                 has it (it upgrades), so it should not need a click to find. -->
+            <details class="alt-install" open>
               <summary>Prefer Homebrew?</summary>
               <div class="copy-block">
 <pre id="brew-cmd"><code>brew tap jobtools/tap
