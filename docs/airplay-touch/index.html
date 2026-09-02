@@ -321,8 +321,8 @@
                  release. Hidden until then: a version number frozen into this
                  page is a promise it stops keeping the moment we ship again. -->
             <dl class="release" id="dl-meta" hidden></dl>
-            <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;">
-              Unzip it and drag <strong>AirPlay Touch</strong> to your Applications folder.
+            <p style="color: var(--muted); font-size: .85rem; margin-top: .9rem;" id="dl-howto">
+              Drag <strong>AirPlay Touch</strong> to your Applications folder.
             </p>
             <!-- Open by default: Homebrew is the better install for anyone who
                  has it (it upgrades), so it should not need a click to find. -->
@@ -382,9 +382,17 @@ brew install --cask airplay-touch</code></pre>
       fetch('latest.json', { cache: 'no-cache' })
         .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
         .then((d) => {
-          const url = d.zip || d.url;
+          const url = d.dmg || d.zip || d.url;
           if (!url) return;
           document.getElementById('dl-link').href = url;
+          // A .dmg is opened, a .zip is expanded — say whichever one they got.
+          if (/\.zip$/i.test(url)) {
+            document.getElementById('dl-howto').innerHTML =
+              'Unzip it and drag <strong>AirPlay Touch</strong> to your Applications folder.';
+          } else if (/\.dmg$/i.test(url)) {
+            document.getElementById('dl-howto').innerHTML =
+              'Open the disk image and drag <strong>AirPlay Touch</strong> to Applications.';
+          }
 
           // Only rows the file actually carries. A hand-written latest.json
           // missing a field should drop that row, not print "undefined" — and
