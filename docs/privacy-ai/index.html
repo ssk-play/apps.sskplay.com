@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — AI features — apps.sskplay.com</title>
+    <meta name="description" content="Privacy policy for sskplay apps with AI features, covering Review Diary." />
+    <meta property="og:title" content="Privacy Policy — AI features — apps.sskplay.com" />
+    <meta property="og:description" content="Privacy policy for sskplay apps with AI features, covering Review Diary." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://apps.sskplay.com/privacy-ai/" />
+    <link rel="icon" href="/airplay-touch/assets/icon-512.png" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fafafa;
+        --fg: #111;
+        --muted: #6b6b6b;
+        --line: #e5e5e5;
+        --card: #fff;
+        --accent: #0a84ff;
+        --code-bg: #f4f4f5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0b0c;
+          --fg: #f3f3f3;
+          --muted: #9a9a9f;
+          --line: #232326;
+          --card: #141416;
+          --accent: #4ea1ff;
+          --code-bg: #1a1a1d;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .container { max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
+
+      header.site {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      header.site nav a { color: var(--muted); font-size: .9rem; }
+
+      main { padding: 2.5rem 0 3rem; }
+
+      h1 {
+        font-size: clamp(1.6rem, 4vw, 2rem);
+        letter-spacing: -.01em;
+        margin: 0 0 .5rem;
+      }
+      h2 {
+        font-size: 1.15rem;
+        margin: 2.25rem 0 .75rem;
+        padding-bottom: .35rem;
+        border-bottom: 1px solid var(--line);
+        letter-spacing: -.005em;
+      }
+      h3 {
+        font-size: 1rem;
+        margin: 1.5rem 0 .5rem;
+        letter-spacing: -.005em;
+      }
+      p, ul { margin: .75rem 0; }
+      ul { padding-left: 1.25rem; }
+      li { margin: .25rem 0; }
+      .meta { color: var(--muted); font-size: .9rem; margin-bottom: 1.25rem; }
+      .meta strong { color: var(--fg); }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        background: var(--code-bg);
+        padding: .1em .4em;
+        border-radius: 4px;
+        font-size: .9em;
+      }
+
+      .callout {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 1rem 1.15rem;
+        margin: 1.25rem 0;
+      }
+      .callout p:first-child { margin-top: 0; }
+      .callout p:last-child { margin-bottom: 0; }
+
+      footer.site {
+        padding: 2rem 0 3rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: .9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="container">
+        <nav><a href="/">← apps.sskplay.com</a></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Privacy Policy — AI features</h1>
+
+      <p class="meta">
+        <strong>Effective date:</strong> 2026-09-04 &nbsp;·&nbsp;
+        <strong>Last updated:</strong> 2026-09-04
+      </p>
+
+      <p>This policy covers <strong>Review Diary</strong> (<code>com.sskplay.a3diary</code>,
+      Android), an app published by <strong>sskplay</strong> (“we”, “our”). Review Diary
+      can send a diary entry to an AI model to write a reflection on it, and it keeps a
+      small amount of data on a server we operate. Because of that it is <em>not</em>
+      covered by our <a href="/privacy/">general privacy policy</a>, which describes apps
+      that keep everything on your device. Where the two differ, this page is the one that
+      applies to Review Diary.</p>
+
+      <h2 id="overview">Overview</h2>
+
+      <p>Your diary lives on your phone. No diary text is sent anywhere until you ask
+      for something that requires it, and there are exactly two such things:</p>
+
+      <ul>
+        <li>You ask for an <strong>AI reflection</strong> on one specific entry — that one
+        entry is sent, through our server, to an AI model provider.</li>
+        <li>You turn on <strong>encrypted backup</strong> — the text of your entries is
+        encrypted on your phone with a key only you hold, and the encrypted result is
+        uploaded. Two fields travel in the clear so the app can sort and show your entries:
+        the date and the mood value. See <a href="#backup">Encrypted backup</a> below.</li>
+      </ul>
+
+      <p>If you do neither, no diary text ever leaves your device. Both are off until you
+      act, and both can be stopped at any time.</p>
+
+      <p>Separately from your diary, the app does send us a small amount of data that is
+      not diary content: an anonymous installation record, and any feedback you choose to
+      send us from inside the app. Those are listed in full under
+      <a href="#what-we-store">What we keep on our server</a> below.</p>
+
+      <p>Separately again, the free version shows banner ads. They are chosen by Google
+      from its own signals and never from what you wrote — see
+      <a href="#advertising">Advertising</a> below.</p>
+
+      <h2 id="ai-reflections">AI reflections — what is sent</h2>
+
+      <p>When you explicitly request a reflection on a diary entry:</p>
+
+      <ul>
+        <li><strong>Only that one entry is sent.</strong> Your other entries stay on the
+        device. There is no bulk upload and no background sync of diary text.</li>
+        <li>The request goes to our own gateway at <code>a1.sskplay.com</code>, which
+        forwards it to an AI model provider. We use more than one provider upstream, and
+        which one handles a given request may change.</li>
+        <li><strong>The model is not told who you are.</strong> Your name, email address,
+        and account are not part of the request. What reaches the model is the entry text,
+        the mood value you picked, the date, and the language.</li>
+        <li>Where a reflection refers back to how you have been writing lately, it is not
+        your earlier entries that are sent — only a short summary of writing style, on the
+        order of 30 characters.</li>
+        <li>To enforce the free monthly limit we keep a <strong>per-installation monthly
+        counter</strong> of how many reflections have been requested. It counts requests;
+        it does not record what they were about.</li>
+      </ul>
+
+      <p>The entry passes through our server in order to reach the model, and the app tells
+      you so before you use the feature: <em>“Your entry is stored on our server and
+      reviewed by AI.”</em> Today, once the reflection has been returned, we do not keep
+      the entry text in our database. Treat the in-app notice as the promise we are held
+      to: if that ever stops being true, this page and the in-app notice change together,
+      and neither will ever claim less handling than actually happens.</p>
+
+      <h3>When a request fails</h3>
+
+      <div class="callout">
+        <p>If a request to an AI provider fails, our gateway writes an <strong>error log</strong>
+        that can include part of the request and part of the response — up to
+        <strong>900 characters</strong>, kept for up to <strong>90 days</strong>, then
+        deleted.</p>
+        <p>This is not a hypothetical: some providers echo the content of a request back in
+        their error response, so on a failed reflection a fragment of your entry can end up
+        in that log. The logs are used only to diagnose failures. They are not read for any
+        other purpose, not linked to a name or email address, and not shared.</p>
+      </div>
+
+      <h2 id="model-training">Model training</h2>
+
+      <p>We do not use your diary entries to train any model of our own, and we require our
+      AI providers not to use them for training either. We want to be exact about the limit
+      of that promise: once a request leaves our gateway, this depends on the provider
+      honouring its own terms. It is a contractual commitment we hold them to, not something
+      we can technically enforce or independently verify.</p>
+
+      <h2 id="what-we-store">What we keep on our server</h2>
+
+      <p>Our server runs on Cloudflare, and the database is Cloudflare D1. Your diary text
+      is <strong>not</strong> in it. What is:</p>
+
+      <ul>
+        <li>A <strong>random installation identifier</strong>, generated on your device. It
+        is not the Android Advertising ID and is not derived from any device or account
+        identifier. Reinstalling the app produces a new one.</li>
+        <li>Device model, OS version, app version, and language.</li>
+        <li><strong>Feedback text</strong> you send from inside the app. Before it is
+        stored, we automatically mask email addresses, phone numbers, national ID numbers,
+        card numbers, and URLs.</li>
+        <li>Your <strong>subscription status</strong> and the purchase token that proves
+        it.</li>
+        <li>If, and only if, you sign in to use backup: a <strong>one-way hash</strong> of
+        your Google account email address. The address itself is not stored, and the hash
+        cannot be turned back into it.</li>
+      </ul>
+
+      <h2 id="backup">Encrypted backup (optional, paid, off by default)</h2>
+
+      <p>Backup exists so a diary survives a lost or replaced phone. It is off until you
+      turn it on.</p>
+
+      <ul>
+        <li>You choose a passphrase. A key is derived from it on your device
+        (PBKDF2, 210,000 iterations) and the text of your entries is encrypted with it
+        (AES-GCM) <strong>before</strong> anything is uploaded.</li>
+        <li>The key and the passphrase never leave your device. <strong>We cannot read the
+        text of your entries, and neither can Google.</strong> What we hold for those is
+        ciphertext.</li>
+        <li>Two fields are stored in the clear so the app can sort and display your entries
+        without decrypting everything: the <strong>date</strong> and the <strong>mood
+        value</strong>. The entry text is never in the clear.</li>
+        <li><strong>If you forget the passphrase, nobody can recover the backup</strong> —
+        not you, not us. There is no reset, because there is no copy of the key.</li>
+        <li>Turning backup off offers to delete the cloud copy.</li>
+      </ul>
+
+      <p><strong>Google sign-in</strong> is used for backup and nothing else. It is what
+      lets a restore on a new phone find the backup that belongs to you; without an account
+      there is no way to identify a backup as yours after the old device is gone. Signing in
+      is only required if you use backup.</p>
+
+      <h2 id="advertising">Advertising (free version)</h2>
+
+      <p>The free version of Review Diary shows <strong>banner ads</strong> provided by
+      <strong>Google AdMob</strong> (Google LLC). Subscribing to premium removes them.</p>
+
+      <p>The ads and your diary are kept apart, and we want to be specific about what that
+      means rather than leaving it to be inferred:</p>
+
+      <ul>
+        <li>Ads appear on the <strong>list screen only</strong>. There is no ad on the
+        screen where you write an entry, and none on the AI reflection screen.</li>
+        <li>An ad is never placed alongside the text of an entry.</li>
+        <li><strong>Your diary is not used to target ads.</strong> No entry, and nothing
+        derived from one, is sent to an ad network. The ads SDK cannot reach your diary, and
+        what you write plays no part in which ad you are shown.</li>
+      </ul>
+
+      <p>What Google may use to choose an ad is its own signals, not ours: the device's
+      <strong>advertising ID</strong>, approximate location derived from your IP address,
+      and coarse device information such as model, OS version, and language. That is
+      Google's processing, governed by the
+      <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and
+      <a href="https://support.google.com/admob/answer/6128543">AdMob's ads personalisation
+      policy</a>. On Android you can reset or delete the advertising ID, and opt out of ad
+      personalisation, in <strong>Settings &gt; Privacy &gt; Ads</strong>.</p>
+
+      <p>In the <strong>EEA, the UK, and Switzerland</strong>, Google's UMP consent form is
+      shown first, and <strong>no ad is requested until you have answered it</strong>. You
+      can reopen that form from inside the app at any time and change what you chose.</p>
+
+      <h2 id="what-we-dont-do">What we do not do</h2>
+
+      <ul>
+        <li>We never send your diary — or anything derived from it — to an ad network.
+        The free version shows ads, and they are chosen without any input from what you
+        wrote; see <a href="#advertising">Advertising</a> above.</li>
+        <li>We add no analytics SDK of our own that profiles you across apps or websites.
+        We should be exact about the limit of that: ad personalisation through the
+        advertising ID is Google's own mechanism, it does work across apps, and it is
+        described under <a href="#advertising">Advertising</a> above — you can switch it
+        off in Android's settings, and premium removes the ads entirely.</li>
+        <li>We do not sell your data, and we do not share it with third parties beyond the
+        service providers listed below, each of which only receives what it needs to do its
+        job.</li>
+        <li>We do not read your diary. It is not in our database, and the model receives it
+        without knowing whose it is. The one place a fragment of an entry can sit somewhere
+        we could open it is the gateway error log after a failed request, described
+        <a href="#ai-reflections">above</a> — we look at those logs to fix failures, and for
+        nothing else.</li>
+      </ul>
+
+      <h2 id="third-parties">Service providers</h2>
+
+      <ul>
+        <li><strong>Cloudflare</strong> — hosts our server and the D1 database, and the
+        <code>a1.sskplay.com</code> gateway. <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></li>
+        <li><strong>Google</strong> — Google Play Billing for the subscription, Firebase
+        Authentication for backup sign-in, and Firestore for the encrypted backup data.
+        <a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
+        <li><strong>Google AdMob</strong> — serves the banner ads in the free version.
+        It receives the advertising signals described under
+        <a href="#advertising">Advertising</a>, and no diary content.
+        <a href="https://policies.google.com/technologies/partner-sites">How Google uses
+        information from sites or apps that use our services</a></li>
+        <li><strong>AI model providers</strong>, reached only through our gateway, and only
+        for a reflection you asked for. They receive the entry text, mood, date, and
+        language — never your identity.</li>
+      </ul>
+
+      <h2 id="in-app-purchases">In-app purchases</h2>
+
+      <p>The subscription is handled by <strong>Google Play Billing</strong>. Google
+      receives and processes the payment — we never receive or store your payment details.
+      We keep only the purchase token and whether the subscription is active, so the app
+      knows what you are entitled to.</p>
+
+      <h2 id="childrens-privacy">Children's privacy</h2>
+
+      <p>Review Diary is not directed to children under 13, and we do not knowingly collect
+      personal information from them. If you believe a child has used the app and sent us
+      data, contact us and we will delete it.</p>
+
+      <h2 id="retention-and-deletion">Retention and deletion</h2>
+
+      <ul>
+        <li><strong>On-device diary data</strong> is kept until you delete an entry, clear
+        the app's data in <strong>Settings &gt; Apps</strong>, or uninstall the app.</li>
+        <li><strong>Diary text sent for a reflection</strong> is not retained in our
+        database after the reflection is returned. The one exception is the gateway error
+        log described above: up to 900 characters, up to 90 days.</li>
+        <li><strong>Encrypted backup</strong> is retained until you turn backup off (which
+        offers to delete the cloud copy) or ask us to delete it.</li>
+        <li><strong>Installation record, feedback, and subscription status</strong> are
+        retained while the app is in use, and deleted on request.</li>
+        <li><strong>Payment data</strong> is retained by Google under its own policies, as
+        is the <strong>advertising data</strong> AdMob collects in the free version.</li>
+      </ul>
+
+      <h3>How to ask us to delete your data</h3>
+
+      <p>Email <a href="mailto:contact@sskplay.com">contact@sskplay.com</a> with your
+      <strong>installation ID</strong>, which is what identifies your records to us. You can
+      find it by tapping the title on the diary screen <strong>seven times</strong>. We
+      respond within 30 days.</p>
+
+      <h2 id="your-choices">Your choices</h2>
+
+      <ul>
+        <li>Do not request a reflection, and no diary text is transmitted at all.</li>
+        <li>Leave backup off, and no diary is uploaded. The installation record described
+        above is sent either way, and feedback is sent only when you write some.</li>
+        <li>Subscribe to premium, and the ads go away. In the EEA, the UK, and Switzerland
+        you can also reopen Google's consent form from inside the app and change your
+        advertising choices at any time.</li>
+        <li>Turn backup off later, and delete the cloud copy when prompted.</li>
+        <li>Uninstall, and the on-device diary goes with it. Server-side records are
+        deleted on request as described above.</li>
+      </ul>
+
+      <h2 id="changes-to-this-policy">Changes to this policy</h2>
+
+      <p>We may update this policy. When we do, we will update the “Last updated” date at
+      the top of this page. Because this page is also the basis of our Google Play Data
+      safety declaration, any change to how the app actually behaves is reflected here, in
+      the in-app notice, and in that declaration together.</p>
+
+      <h2 id="contact">Contact</h2>
+
+      <ul>
+        <li><strong>Developer:</strong> sskplay</li>
+        <li><strong>Email:</strong> <a href="mailto:contact@sskplay.com">contact@sskplay.com</a></li>
+        <li><strong>Website:</strong> <a href="https://apps.sskplay.com/">apps.sskplay.com</a></li>
+        <li><strong>General privacy policy (other apps):</strong> <a href="/privacy/">apps.sskplay.com/privacy</a></li>
+      </ul>
+    </main>
+
+    <footer class="site">
+      <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;">
+        <span>© sskplay</span>
+        <span><a href="https://feedback.sskplay.com/" target="_blank" rel="noopener">Feedback</a> &nbsp;·&nbsp; <a href="/">All apps</a></span>
+      </div>
+    </footer>
+  </body>
+</html>
