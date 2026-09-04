@@ -148,8 +148,9 @@
       send us from inside the app. Those are listed in full under
       <a href="#what-we-store">What we keep on our server</a> below.</p>
 
-      <p>Separately again, the free version shows banner ads. They are chosen by Google
-      from its own signals and never from what you wrote — see
+      <p>Separately again, the app reports crashes and usage analytics to Google, and the
+      free version shows banner ads. Neither carries your diary: see
+      <a href="#diagnostics">Crash reports and usage analytics</a> and
       <a href="#advertising">Advertising</a> below.</p>
 
       <h2 id="ai-reflections">AI reflections — what is sent</h2>
@@ -208,8 +209,9 @@
 
       <ul>
         <li>A <strong>random installation identifier</strong>, generated on your device. It
-        is not the Android Advertising ID and is not derived from any device or account
-        identifier. Reinstalling the app produces a new one.</li>
+        is not the Android Advertising ID, not the Firebase app instance ID, and not derived
+        from any device or account identifier — three different values with three different
+        purposes. Reinstalling the app produces a new one.</li>
         <li>Device model, OS version, app version, and language.</li>
         <li><strong>Feedback text</strong> you send from inside the app. Before it is
         stored, we automatically mask email addresses, phone numbers, national ID numbers,
@@ -245,6 +247,39 @@
       lets a restore on a new phone find the backup that belongs to you; without an account
       there is no way to identify a backup as yours after the old device is gone. Signing in
       is only required if you use backup.</p>
+
+      <h2 id="diagnostics">Crash reports and usage analytics</h2>
+
+      <p>The app includes <strong>Firebase Crashlytics</strong> and <strong>Firebase
+      Analytics</strong>, both from Google. They tell us when the app breaks and which
+      parts of it people actually use.</p>
+
+      <ul>
+        <li><strong>Crashlytics</strong>, when the app crashes: the stack trace, the device
+        model, the OS and app version, and the state the app was in just before. Nothing is
+        collected from debug builds.</li>
+        <li><strong>Analytics</strong>: which screens you opened and which actions you took
+        — saving an entry, requesting a reflection, opening the paywall, starting a purchase
+        — along with an app instance ID assigned by Google and general signals such as
+        device, region, and language.</li>
+      </ul>
+
+      <p>Both are processed by Google under the
+      <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+
+      <p><strong>No diary content is attached to any of these events</strong>, and that is
+      enforced in the code rather than left to care: titles, entry text, and reflection
+      results are never passed as event parameters, and even the <em>length</em> of a piece
+      of writing is reported as a bucket (short, medium, long) rather than an exact count,
+      because an exact character count is itself information about what you wrote. A source
+      check fails the build if an analytics call so much as references an entry or title
+      variable.</p>
+
+      <div class="callout">
+        <p>One honest exception: a <strong>crash report can contain a fragment of what you
+        typed</strong>, because an exception message can carry the input that caused it. We
+        cannot rule that out, so we would rather say it than let you assume otherwise.</p>
+      </div>
 
       <h2 id="advertising">Advertising (free version)</h2>
 
@@ -285,19 +320,22 @@
         <li>We never send your diary — or anything derived from it — to an ad network.
         The free version shows ads, and they are chosen without any input from what you
         wrote; see <a href="#advertising">Advertising</a> above.</li>
-        <li>We add no analytics SDK of our own that profiles you across apps or websites.
-        We should be exact about the limit of that: ad personalisation through the
-        advertising ID is Google's own mechanism, it does work across apps, and it is
-        described under <a href="#advertising">Advertising</a> above — you can switch it
-        off in Android's settings, and premium removes the ads entirely.</li>
+        <li>We do not build a profile of you from your diary, and we do not sell or share
+        one. What we do use is Google's own tooling, and we would rather name its reach than
+        round it down: <strong>Firebase Analytics</strong> records what you do in the app
+        against an app instance ID Google assigns; ad personalisation through the
+        <strong>advertising ID</strong> does work across apps.
+        Both are described above, under <a href="#diagnostics">Crash reports and usage
+        analytics</a> and <a href="#advertising">Advertising</a>. You can switch ad
+        personalisation off in Android's settings, and premium removes the ads entirely.</li>
         <li>We do not sell your data, and we do not share it with third parties beyond the
         service providers listed below, each of which only receives what it needs to do its
         job.</li>
         <li>We do not read your diary. It is not in our database, and the model receives it
-        without knowing whose it is. The one place a fragment of an entry can sit somewhere
-        we could open it is the gateway error log after a failed request, described
-        <a href="#ai-reflections">above</a> — we look at those logs to fix failures, and for
-        nothing else.</li>
+        without knowing whose it is. There are exactly two places a fragment of an entry can
+        end up somewhere we could open it, and both are diagnostic: the gateway error log
+        after a failed request, and a crash report. We look at those to fix failures, and
+        for nothing else.</li>
       </ul>
 
       <h2 id="third-parties">Service providers</h2>
@@ -306,7 +344,9 @@
         <li><strong>Cloudflare</strong> — hosts our server and the D1 database, and the
         <code>a1.sskplay.com</code> gateway. <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></li>
         <li><strong>Google</strong> — Google Play Billing for the subscription, Firebase
-        Authentication for backup sign-in, and Firestore for the encrypted backup data.
+        Authentication for backup sign-in, Firestore for the encrypted backup data, and
+        <strong>Firebase Crashlytics</strong> and <strong>Firebase Analytics</strong> for
+        crash reports and usage analytics.
         <a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
         <li><strong>Google AdMob</strong> — serves the banner ads in the free version.
         It receives the advertising signals described under
@@ -344,7 +384,8 @@
         <li><strong>Installation record, feedback, and subscription status</strong> are
         retained while the app is in use, and deleted on request.</li>
         <li><strong>Payment data</strong> is retained by Google under its own policies, as
-        is the <strong>advertising data</strong> AdMob collects in the free version.</li>
+        are the <strong>advertising data</strong> AdMob collects in the free version and the
+        <strong>crash reports and analytics events</strong> sent to Firebase.</li>
       </ul>
 
       <h3>How to ask us to delete your data</h3>
@@ -360,6 +401,9 @@
         <li>Do not request a reflection, and no diary text is transmitted at all.</li>
         <li>Leave backup off, and no diary is uploaded. The installation record described
         above is sent either way, and feedback is sent only when you write some.</li>
+        <li>Crash reports and usage analytics run whenever you use the app — they are set
+        out above so you can see exactly what they carry, and no diary content rides on
+        them.</li>
         <li>Subscribe to premium, and the ads go away. In the EEA, the UK, and Switzerland
         you can also reopen Google's consent form from inside the app and change your
         advertising choices at any time.</li>
