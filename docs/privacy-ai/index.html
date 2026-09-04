@@ -148,6 +148,10 @@
       send us from inside the app. Those are listed in full under
       <a href="#what-we-store">What we keep on our server</a> below.</p>
 
+      <p>Separately again, the free version shows banner ads. They are chosen by Google
+      from its own signals and never from what you wrote — see
+      <a href="#advertising">Advertising</a> below.</p>
+
       <h2 id="ai-reflections">AI reflections — what is sent</h2>
 
       <p>When you explicitly request a reflection on a diary entry:</p>
@@ -242,11 +246,47 @@
       there is no way to identify a backup as yours after the old device is gone. Signing in
       is only required if you use backup.</p>
 
+      <h2 id="advertising">Advertising (free version)</h2>
+
+      <p>The free version of Review Diary shows <strong>banner ads</strong> provided by
+      <strong>Google AdMob</strong> (Google LLC). Subscribing to premium removes them.</p>
+
+      <p>The ads and your diary are kept apart, and we want to be specific about what that
+      means rather than leaving it to be inferred:</p>
+
+      <ul>
+        <li>Ads appear on the <strong>list screen only</strong>. There is no ad on the
+        screen where you write an entry, and none on the AI reflection screen.</li>
+        <li>An ad is never placed alongside the text of an entry.</li>
+        <li><strong>Your diary is not used to target ads.</strong> No entry, and nothing
+        derived from one, is sent to an ad network. The ads SDK cannot reach your diary, and
+        what you write plays no part in which ad you are shown.</li>
+      </ul>
+
+      <p>What Google may use to choose an ad is its own signals, not ours: the device's
+      <strong>advertising ID</strong>, approximate location derived from your IP address,
+      and coarse device information such as model, OS version, and language. That is
+      Google's processing, governed by the
+      <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and
+      <a href="https://support.google.com/admob/answer/6128543">AdMob's ads personalisation
+      policy</a>. On Android you can reset or delete the advertising ID, and opt out of ad
+      personalisation, in <strong>Settings &gt; Privacy &gt; Ads</strong>.</p>
+
+      <p>In the <strong>EEA, the UK, and Switzerland</strong>, Google's UMP consent form is
+      shown first, and <strong>no ad is requested until you have answered it</strong>. You
+      can reopen that form from inside the app at any time and change what you chose.</p>
+
       <h2 id="what-we-dont-do">What we do not do</h2>
 
       <ul>
-        <li>No advertising. The app shows no ads and collects no advertising identifier.</li>
-        <li>No analytics SDK that profiles you across apps or websites.</li>
+        <li>We never send your diary — or anything derived from it — to an ad network.
+        The free version shows ads, and they are chosen without any input from what you
+        wrote; see <a href="#advertising">Advertising</a> above.</li>
+        <li>We add no analytics SDK of our own that profiles you across apps or websites.
+        We should be exact about the limit of that: ad personalisation through the
+        advertising ID is Google's own mechanism, it does work across apps, and it is
+        described under <a href="#advertising">Advertising</a> above — you can switch it
+        off in Android's settings, and premium removes the ads entirely.</li>
         <li>We do not sell your data, and we do not share it with third parties beyond the
         service providers listed below, each of which only receives what it needs to do its
         job.</li>
@@ -265,6 +305,11 @@
         <li><strong>Google</strong> — Google Play Billing for the subscription, Firebase
         Authentication for backup sign-in, and Firestore for the encrypted backup data.
         <a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
+        <li><strong>Google AdMob</strong> — serves the banner ads in the free version.
+        It receives the advertising signals described under
+        <a href="#advertising">Advertising</a>, and no diary content.
+        <a href="https://policies.google.com/technologies/partner-sites">How Google uses
+        information from sites or apps that use our services</a></li>
         <li><strong>AI model providers</strong>, reached only through our gateway, and only
         for a reflection you asked for. They receive the entry text, mood, date, and
         language — never your identity.</li>
@@ -295,7 +340,8 @@
         offers to delete the cloud copy) or ask us to delete it.</li>
         <li><strong>Installation record, feedback, and subscription status</strong> are
         retained while the app is in use, and deleted on request.</li>
-        <li><strong>Payment data</strong> is retained by Google under its own policies.</li>
+        <li><strong>Payment data</strong> is retained by Google under its own policies, as
+        is the <strong>advertising data</strong> AdMob collects in the free version.</li>
       </ul>
 
       <h3>How to ask us to delete your data</h3>
@@ -311,6 +357,9 @@
         <li>Do not request a reflection, and no diary text is transmitted at all.</li>
         <li>Leave backup off, and no diary is uploaded. The installation record described
         above is sent either way, and feedback is sent only when you write some.</li>
+        <li>Subscribe to premium, and the ads go away. In the EEA, the UK, and Switzerland
+        you can also reopen Google's consent form from inside the app and change your
+        advertising choices at any time.</li>
         <li>Turn backup off later, and delete the cloud copy when prompted.</li>
         <li>Uninstall, and the on-device diary goes with it. Server-side records are
         deleted on request as described above.</li>
