@@ -152,10 +152,23 @@
       <p>Any app not named here follows the <a href="/privacy/">general policy</a> instead.
       When we add an AI feature to another app, it is added to this list before it ships.</p>
 
+      <div class="callout">
+        <p><strong>This page describes the outer limits of what these apps may do with what
+        you write, not a snapshot of what each one does today.</strong> A given app usually
+        does less than this policy allows — it may store nothing on our servers, show no ads,
+        collect no analytics. Where that is true we say so, because it is useful to know.</p>
+        <p>But those descriptions are <strong>not undertakings to keep doing less</strong>.
+        Features arrive, plans change, and an app can start doing anything this page permits.
+        What will not happen without this page changing first is something it does
+        <em>not</em> permit.</p>
+      </div>
+
       <p>Most of what follows is true of both apps. Where they genuinely differ — and they
       differ on things that matter, starting with whether your writing is kept on our server
       at all — the text says which app it is talking about, and the table below is the short
       version.</p>
+
+      <p>How the two differ as things stand:</p>
 
       <div class="table-wrap">
         <table>
@@ -232,9 +245,13 @@
       the model can read the writing, so what goes to the gateway goes as plain text. Nothing
       about how a copy is kept on a server or a phone changes that.</p>
 
-      <p><strong>Your identity is never part of the request.</strong> Your name, email
-      address, account or user ID, and device identifiers are not sent to the model. What is
-      sent is the writing itself and the little that is needed to work on it:</p>
+      <p><strong>We do not put your identity in the request.</strong> Your name, email
+      address, account or user ID, and device identifiers are not sent to the model. This is
+      the one line here we intend to hold to as the apps change.</p>
+
+      <p>What is sent is the writing you asked us to work on, together with enough context for
+      the result to make sense and the language it should be handled in. How much context that
+      is depends on the feature and can change as the apps improve. As things stand:</p>
 
       <ul>
         <li><strong>Review Diary</strong> — when you request a reflection on an entry, that
@@ -353,8 +370,9 @@
         number, since all three should go and guessing which is which only adds mistakes. Short
         numbers such as a version or a year survive, so the feedback still means something.
         <strong>URLs are deliberately left alone</strong>: we read this to fix the app, and a
-        link is often the clue. Masking is a safety net, not a guarantee, so please keep
-        anything genuinely sensitive out of it.</li>
+        link is often the clue. Masking is a safety net rather than a
+        guarantee, and the rules can change, so please keep anything genuinely sensitive out
+        of it.</li>
       </ul>
 
       <h2 id="access">When we can reach what you have written</h2>
@@ -395,10 +413,14 @@
       random identifier, and asks for a Google sign-in only if you turn on backup —
       see <a href="#backup">Encrypted backup</a> below.</p>
 
-      <h2 id="backup">Encrypted backup — Review Diary only (optional, paid, off by default)</h2>
+      <h2 id="backup">Encrypted backup (Review Diary)</h2>
 
-      <p>Backup exists so a diary survives a lost or replaced phone. It is off until you turn
-      it on. endiary has no equivalent feature.</p>
+      <p>Review Diary offers an optional paid backup, off until you turn it on, so a diary
+      survives a lost or replaced phone. It is the one place on this page where a copy on our
+      side is genuinely beyond our reach, so it is worth setting out exactly. endiary has no
+      equivalent today; where any app later syncs a copy, assume the managed-key arrangement
+      described under <a href="#what-we-store">What we keep on our servers</a> rather than
+      this one, unless this page says otherwise.</p>
 
       <ul>
         <li>You choose a passphrase. A key is derived from it on your device
@@ -419,10 +441,11 @@
       lets a restore on a new phone find the backup that belongs to you; without an account
       there is no way to identify a backup as yours after the old device is gone.</p>
 
-      <h2 id="diagnostics">Crash reports and usage analytics — Review Diary only</h2>
+      <h2 id="diagnostics">Crash reports and usage analytics</h2>
 
-      <p>Review Diary includes <strong>Firebase Crashlytics</strong> and <strong>Firebase
-      Analytics</strong>, both from Google. endiary includes neither.</p>
+      <p>An app may include <strong>Firebase Crashlytics</strong> and <strong>Firebase
+      Analytics</strong>, both from Google, to report crashes and record how the app is used.
+      Review Diary does; endiary does not, today. Where they are present:</p>
 
       <ul>
         <li><strong>Crashlytics</strong>, when the app crashes: the stack trace, the device
@@ -456,9 +479,9 @@
 
       <h2 id="advertising">Advertising</h2>
 
-      <p>Both apps show ads provided by <strong>Google AdMob</strong> (Google LLC), and both
-      therefore declare the <strong>advertising ID</strong> permission and let the ads SDK use
-      that identifier.</p>
+      <p>An app in this policy may show ads provided by <strong>Google AdMob</strong>
+      (Google LLC). Where it does, it declares the <strong>advertising ID</strong> permission
+      and the ads SDK may use that identifier. Both apps show ads today:</p>
 
       <ul>
         <li><strong>Review Diary</strong> — banner ads in the free version. Subscribing to
@@ -543,14 +566,15 @@
         entries and for Review Diary's encrypted backup; and, in Review Diary only, Firebase
         Crashlytics and Firebase Analytics.
         <a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
-        <li><strong>Google AdMob</strong> — serves the ads in both apps. It receives the
+        <li><strong>Google AdMob</strong> — serves the ads in the apps that show them. It receives the
         advertising signals described under
         <a href="#advertising">Advertising</a>, and no diary content.
         <a href="https://policies.google.com/technologies/partner-sites">How Google uses
         information from sites or apps that use our services</a></li>
         <li><strong>AI model providers</strong>, reached only through our gateway, and only
-        for something you asked for. They receive the writing and the little that travels
-        with it — never your identity — and may retain and use it as described under
+        for something you asked for. Which providers we use changes; this covers whichever
+        one handles a given request. They receive the writing and the little that travels with
+        it — not your identity — and may retain and use it as described under
         <a href="#model-training">Model training</a>.</li>
       </ul>
 
