@@ -167,9 +167,9 @@
               <th scope="row">Is your writing stored on our server?</th>
               <td><strong>No.</strong> An entry passes through to get its reflection and is
               not kept in our database afterwards.</td>
-              <td>Storing entries in your account is how the app is meant to work, and
-              <strong>syncing them is a paid feature</strong>. On the free plan they stay in a
-              database on the device. That is a plan boundary, not a privacy promise.</td>
+              <td><strong>Yes — that is the design.</strong> Syncing is a paid feature, so on
+              a plan without it entries may stay on the device. A plan boundary, not a privacy
+              promise.</td>
             </tr>
             <tr>
               <th scope="row">Account</th>
@@ -180,8 +180,7 @@
             <tr>
               <th scope="row">Where the data sits</th>
               <td>Cloudflare (D1).</td>
-              <td>Google Cloud Firestore, <code>us-central1</code>, for what we hold. Free-plan
-              entries are on the device.</td>
+              <td>Google Cloud Firestore, <code>us-central1</code>.</td>
             </tr>
             <tr>
               <th scope="row">Feedback you send us</th>
@@ -219,7 +218,8 @@
       <p>Beyond that, each app keeps a small amount of data so it can work: an account or
       installation record, a usage counter, and anything you write to us through the feedback
       form. Both apps show ads; Review Diary additionally offers an encrypted backup, which
-      endiary has no equivalent of. All of it is set out below.</p>
+      endiary has no equivalent of. All of it is set out below, including
+      <a href="#access">the circumstances in which we may reach what you have written</a>.</p>
 
       <h2 id="what-goes-to-the-ai">What goes to the AI, and what does not</h2>
 
@@ -314,27 +314,32 @@
 
       <h3>endiary</h3>
 
-      <p><strong>Keeping your entries in your account is how endiary is designed to work</strong>,
-      so that the same diary follows you to another device. <strong>That syncing is a paid
-      feature.</strong> On the free plan your entries are written to a database on the phone
-      itself and are not uploaded.</p>
+      <p><strong>endiary is built to keep your entries in your account on our servers</strong>,
+      so that the same diary follows you to another device. Treat that as the baseline: your
+      writing may be stored by us.</p>
 
       <div class="callout">
-        <p>Read that as a plan boundary, not as a privacy guarantee. Free entries are not on
-        our server today because syncing is something you pay for — <strong>not because we
-        promised to keep your writing off our servers.</strong> If that boundary moves, it
-        moves, and this page will say so. Do not choose the free plan believing it is a
-        privacy setting.</p>
-        <p>Either way it has no bearing on what goes to the AI: a review sends your writing to
-        the gateway as plain text, from any plan. See
+        <p>Syncing is a <strong>paid feature</strong>, so on a plan that does not include it
+        your entries may stay in a database on the phone and never be uploaded. That is a
+        boundary of what you are paying for, <strong>not a promise about privacy</strong> —
+        do not choose a plan believing it is a privacy setting, and do not read it as an
+        undertaking that your writing will never reach our servers.</p>
+        <p>It has no bearing on the AI either way: a review sends your writing to the gateway
+        as plain text, from any plan. See
         <a href="#what-goes-to-the-ai">What goes to the AI</a>.</p>
       </div>
 
-      <p>What we hold on the server, in Google Cloud Firestore in the
+      <p>Where a synced copy is encrypted at rest, the keys are <strong>managed by us</strong>.
+      That protects the copy against someone who gets at the storage; it does not put it
+      beyond our own reach. We will not describe it as end-to-end encrypted, because it is
+      not — Review Diary's backup is the only thing on this page that we genuinely cannot
+      read.</p>
+
+      <p>What we may hold on the server, in Google Cloud Firestore in the
       <code>us-central1</code> region:</p>
 
       <ul>
-        <li>Where your plan syncs your diary: the <strong>title and body</strong> of each
+        <li>Where your diary is synced: the <strong>title and body</strong> of each
         entry, its status, when it was created and changed, and the <strong>final AI
         review</strong> — the score, the feedback, the polished version of your text, and the
         vocabulary it picked out.</li>
@@ -351,6 +356,32 @@
         link is often the clue. Masking is a safety net, not a guarantee, so please keep
         anything genuinely sensitive out of it.</li>
       </ul>
+
+      <h2 id="access">When we can reach what you have written</h2>
+
+      <p>Where a copy of your writing sits on our servers, it is within our technical reach,
+      and we would rather say so than let the rest of this page imply otherwise. There is no
+      moderation console, and nobody here reads diaries out of interest. But there are
+      situations in which we may access stored content, and a policy that did not allow for
+      them would be one we would end up breaking:</p>
+
+      <ul>
+        <li>Acting on a report of abuse, or of content that suggests someone is in danger.</li>
+        <li>Complying with a lawful request from an authority.</li>
+        <li>Investigating a fault or a security incident, where the stored data is what shows
+        us what happened.</li>
+        <li>Enforcing our <a href="/terms/">Terms</a> — for example where an account is being
+        used to attack the service.</li>
+      </ul>
+
+      <p>We keep that access to what the situation needs, and we do not do it routinely. We
+      cannot promise to tell you each time: a legal request may forbid it, and a security
+      investigation may not identify whose data was involved until afterwards.</p>
+
+      <p>Two things sit outside this. <strong>Review Diary</strong> keeps none of your entries
+      on our servers, so there is nothing there to reach. And a <strong>Review Diary encrypted
+      backup</strong> is encrypted with a key we do not hold — we could hand over the
+      ciphertext, and that is all it would be.</p>
 
       <h2 id="accounts">Accounts and sign-in</h2>
 
@@ -493,11 +524,12 @@
         <li>We do not sell your data, and we do not share it with third parties beyond the
         service providers listed below, each of which only receives what it needs to do its
         job.</li>
-        <li>We do not read your writing for our own purposes. In Review Diary it is not in
-        our database at all; in endiary it is stored so the app can give it back to you, not
-        so we can read it. The places a fragment can end up somewhere we could open it are
-        diagnostic and named above: the gateway error log after a failed request, and a
-        crash report in Review Diary.</li>
+        <li>We do not read your writing for marketing, profiling, or curiosity. It is stored
+        so the app can give it back to you. Where we may reach it — abuse reports, lawful
+        requests, faults and security incidents — is set out under
+        <a href="#access">When we can reach what you have written</a>, and diagnostics can
+        leave a fragment in the two places named above: the gateway error log after a failed
+        request, and a crash report in Review Diary.</li>
       </ul>
 
       <h2 id="third-parties">Service providers</h2>
@@ -524,10 +556,10 @@
 
       <h2 id="in-app-purchases">In-app purchases</h2>
 
-      <p>Where an app sells something, it is handled by <strong>Google Play Billing</strong>.
-      Google receives and processes the payment — we never receive or store your payment
-      details. Review Diary keeps the purchase token and whether the subscription is active,
-      so the app knows what you are entitled to. endiary currently sells nothing.</p>
+      <p>Both apps may offer purchases or subscriptions, handled by <strong>Google Play
+      Billing</strong>. Google receives and processes the payment — we never receive or store
+      your payment details. What we keep is the <strong>purchase token</strong> and whether a
+      subscription is active, so the app knows what you are entitled to.</p>
 
       <h2 id="childrens-privacy">Children's privacy</h2>
 
