@@ -171,13 +171,6 @@
               app is for.</td>
             </tr>
             <tr>
-              <th scope="row">Can our staff read what you wrote?</th>
-              <td>Nothing of yours is on our server to read.</td>
-              <td><strong>Yes</strong> — a designated operator account can open stored
-              entries, for moderation. See
-              <a href="#operator-access">Who can read what you write</a>.</td>
-            </tr>
-            <tr>
               <th scope="row">Account</th>
               <td>None. A random installation identifier. Google sign-in only if you turn on
               backup.</td>
@@ -226,37 +219,16 @@
       form. Review Diary additionally offers an encrypted backup and shows ads; endiary does
       neither. All of it is set out below.</p>
 
-      <p>One thing belongs at the top rather than buried: <strong>endiary stores your entries
-      on our server, and an operator account of ours can open them</strong> — the next section
-      says what that means.</p>
-
-      <h2 id="operator-access">Who can read what you write</h2>
-
-      <div class="callout">
-        <p><strong>In endiary, a designated operator account of ours can open the entries
-        stored in your account and read them.</strong> It is there for moderation — dealing
-        with reported or abusive content. The access uses server-side privileges, and
-        <strong>you are not told when an entry of yours is opened.</strong></p>
-      </div>
-
-      <p>We would rather you knew that before you write than after, because it sets a real
-      limit on what “your account” means here. Your entries are stored on our server, that
-      operator account can reach them, and nothing in the app puts them out of its reach. If
-      that is not a trade you want to make, endiary is not the right place for writing you
-      need kept private. We are still settling exactly how far that review goes, and this
-      page will say so when it is settled — until then, read it as: an operator can open your
-      stored entries.</p>
-
-      <p><strong>Review Diary is different, and only for one reason:</strong> there is nothing
-      of yours on our server to open. It does not keep your entries. Your writing there is on
-      your device, or — if you turned backup on — encrypted with a key we do not have. No
-      operator account changes that.</p>
-
       <h2 id="what-goes-to-the-ai">What goes to the AI, and what does not</h2>
 
       <p>Both apps reach AI model providers the same way: through a gateway we run at
       <code>a1.sskplay.com</code>, which forwards the request to a provider. We use more than
       one provider, and which one handles a given request may change.</p>
+
+      <p>How an entry is <em>stored</em> and what is <em>sent to the AI</em> are two
+      separate things, and it is worth being clear about the second: a review only works if
+      the model can read the writing, so what goes to the gateway goes as plain text. Nothing
+      about how a copy is kept on a server or a phone changes that.</p>
 
       <p><strong>Your identity is never part of the request.</strong> Your name, email
       address, account or user ID, and device identifiers are not sent to the model. What is
@@ -343,9 +315,7 @@
       <p><strong>Your entries are stored on our server.</strong> That is not a side effect —
       it is the app: your diary is kept in your account so you can come back to it, and so a
       correction can refer to what you wrote before. They live in Google Cloud Firestore in
-      the <code>us-central1</code> region, under your account, and our operator account can
-      open them (see <a href="#operator-access">Who can read what you write</a>). They
-      hold:</p>
+      the <code>us-central1</code> region, under your account, and hold:</p>
 
       <ul>
         <li>The <strong>title and body</strong> of each entry, its status, and when it was
@@ -490,13 +460,11 @@
         <li>We do not sell your data, and we do not share it with third parties beyond the
         service providers listed below, each of which only receives what it needs to do its
         job.</li>
-        <li>We do not read your writing for marketing, profiling, or any purpose beyond the
-        two named on this page: <strong>moderation</strong> of stored endiary entries by the
-        operator account described under
-        <a href="#operator-access">Who can read what you write</a>, and
-        <strong>diagnostics</strong> — the gateway error log after a failed request, and a
-        crash report in Review Diary. In Review Diary there is nothing of yours in our
-        database to read at all.</li>
+        <li>We do not read your writing for our own purposes. In Review Diary it is not in
+        our database at all; in endiary it is stored so the app can give it back to you, not
+        so we can read it. The places a fragment can end up somewhere we could open it are
+        diagnostic and named above: the gateway error log after a failed request, and a
+        crash report in Review Diary.</li>
       </ul>
 
       <h2 id="third-parties">Service providers</h2>
