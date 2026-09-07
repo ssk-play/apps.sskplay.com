@@ -167,8 +167,9 @@
               <th scope="row">Is your writing stored on our server?</th>
               <td><strong>No.</strong> An entry passes through to get its reflection and is
               not kept in our database afterwards.</td>
-              <td><strong>Yes.</strong> Entries are saved to your account — that is what the
-              app is for.</td>
+              <td>Storing entries in your account is how the app is meant to work, and
+              <strong>syncing them is a paid feature</strong>. On the free plan they stay in a
+              database on the device. That is a plan boundary, not a privacy promise.</td>
             </tr>
             <tr>
               <th scope="row">Account</th>
@@ -179,7 +180,8 @@
             <tr>
               <th scope="row">Where the data sits</th>
               <td>Cloudflare (D1).</td>
-              <td>Google Cloud Firestore, <code>us-central1</code>.</td>
+              <td>Google Cloud Firestore, <code>us-central1</code>, for what we hold. Free-plan
+              entries are on the device.</td>
             </tr>
             <tr>
               <th scope="row">Feedback you send us</th>
@@ -312,16 +314,30 @@
 
       <h3>endiary</h3>
 
-      <p><strong>Your entries are stored on our server.</strong> That is not a side effect —
-      it is the app: your diary is kept in your account so you can come back to it, and so a
-      correction can refer to what you wrote before. They live in Google Cloud Firestore in
-      the <code>us-central1</code> region, under your account, and hold:</p>
+      <p><strong>Keeping your entries in your account is how endiary is designed to work</strong>,
+      so that the same diary follows you to another device. <strong>That syncing is a paid
+      feature.</strong> On the free plan your entries are written to a database on the phone
+      itself and are not uploaded.</p>
+
+      <div class="callout">
+        <p>Read that as a plan boundary, not as a privacy guarantee. Free entries are not on
+        our server today because syncing is something you pay for — <strong>not because we
+        promised to keep your writing off our servers.</strong> If that boundary moves, it
+        moves, and this page will say so. Do not choose the free plan believing it is a
+        privacy setting.</p>
+        <p>Either way it has no bearing on what goes to the AI: a review sends your writing to
+        the gateway as plain text, from any plan. See
+        <a href="#what-goes-to-the-ai">What goes to the AI</a>.</p>
+      </div>
+
+      <p>What we hold on the server, in Google Cloud Firestore in the
+      <code>us-central1</code> region:</p>
 
       <ul>
-        <li>The <strong>title and body</strong> of each entry, its status, and when it was
-        created and changed.</li>
-        <li>The <strong>final AI review</strong> of that entry — the score, the feedback, the
-        polished version of your text, and the vocabulary it picked out.</li>
+        <li>Where your plan syncs your diary: the <strong>title and body</strong> of each
+        entry, its status, when it was created and changed, and the <strong>final AI
+        review</strong> — the score, the feedback, the polished version of your text, and the
+        vocabulary it picked out.</li>
         <li>A <strong>daily usage counter</strong>, to enforce the free limit. It counts;
         it holds nothing you wrote.</li>
         <li><strong>Feedback text</strong> you send from inside the app, together with your
@@ -528,9 +544,11 @@
         characters, up to 90 days.</li>
         <li><strong>Review Diary entries</strong> stay on your device until you delete them,
         clear the app's data, or uninstall. They are not in our database.</li>
-        <li><strong>endiary entries</strong> stay in your account until you delete them or
-        ask us to delete the account. An <strong>anonymous account is deleted automatically
-        after 30 days without use</strong>, and its entries go with it.</li>
+        <li><strong>endiary entries</strong> stay where your plan keeps them — on the device
+        until you delete them, clear the app's data, or uninstall; and, where your plan syncs
+        them, in your account until you delete them or ask us to delete the account. An
+        <strong>anonymous account is deleted automatically after 30 days without use</strong>,
+        and anything held in it goes with it.</li>
         <li><strong>Encrypted backup</strong> is retained until you turn backup off (which
         offers to delete the cloud copy) or ask us to delete it.</li>
         <li><strong>Account or installation records, usage counters, feedback, and
