@@ -185,15 +185,14 @@
               <th scope="row">Feedback you send us</th>
               <td>Email addresses, phone numbers, national ID and card numbers, and URLs are
               masked before storage.</td>
-              <td><strong>Stored as written — no masking.</strong> Please do not put
-              anything sensitive in it.</td>
+              <td>Email addresses, national ID numbers, and any run of nine or more digits
+              are masked before storage. URLs are kept on purpose.</td>
             </tr>
             <tr>
               <th scope="row">Ads</th>
               <td>Google AdMob banners in the free version.</td>
-              <td>None shown or requested. The ads library is still compiled in and brings
-              the <code>AD_ID</code> permission with it — see
-              <a href="#advertising">Advertising</a>.</td>
+              <td>None. No ad is shown or requested, and the advertising-ID permissions are
+              stripped out of the build.</td>
             </tr>
             <tr>
               <th scope="row">Crash reports and analytics</th>
@@ -322,9 +321,14 @@
         it holds nothing you wrote.</li>
         <li><strong>Feedback text</strong> you send from inside the app, together with your
         user ID, the category you chose, the screen you sent it from, the entry it refers to,
-        the app version, the package name, and the platform. <strong>Feedback is stored
-        exactly as you type it — nothing is masked</strong> — so please keep account numbers
-        and the like out of it.</li>
+        the app version, the package name, and the platform. Before the text is stored we mask
+        email addresses, national ID numbers, and <strong>any run of nine or more digits</strong>
+        — a length rule rather than an attempt to tell a phone number from a card or an account
+        number, since all three should go and guessing which is which only adds mistakes. Short
+        numbers such as a version or a year survive, so the feedback still means something.
+        <strong>URLs are deliberately left alone</strong>: we read this to fix the app, and a
+        link is often the clue. Masking is a safety net, not a guarantee, so please keep
+        anything genuinely sensitive out of it.</li>
       </ul>
 
       <h2 id="accounts">Accounts and sign-in</h2>
@@ -405,15 +409,11 @@
       them. <strong>endiary shows no ads.</strong> It contains no ad code, requests
       no ad, and shows you nothing.</p>
 
-      <div class="callout">
-        <p>One thing about endiary we would rather state than gloss over: the Google Mobile
-        Ads library is still compiled into the build, and it brings with it the
-        <code>com.google.android.gms.permission.AD_ID</code> permission and its own start-up
-        component. The app never asks for an ad, but we are not in a position to promise you
-        that the advertising identifier is therefore out of the library's reach.</p>
-        <p>Nothing you write is involved either way: no entry, and nothing derived from one,
-        goes anywhere near an ad network. We intend to drop the unused library.</p>
-      </div>
+      <p>The Google Mobile Ads library is compiled into the endiary build, but the
+      advertising-ID permissions it would otherwise add —
+      <code>com.google.android.gms.permission.AD_ID</code> and the Android ad-services
+      permissions — are <strong>removed from the app's manifest</strong>, so the app does not
+      hold them. endiary collects no advertising identifier.</p>
 
       <p>In Review Diary the ads and your diary are kept apart, and we want to be specific
       about what that means rather than leaving it to be inferred:</p>
