@@ -191,8 +191,8 @@
             <tr>
               <th scope="row">Ads</th>
               <td>Google AdMob banners in the free version.</td>
-              <td>None. No ad is shown or requested, and the advertising-ID permissions are
-              stripped out of the build.</td>
+              <td>Google AdMob banner ads, plus rewarded ads you can watch to raise the
+              day's review limit.</td>
             </tr>
             <tr>
               <th scope="row">Crash reports and analytics</th>
@@ -216,8 +216,8 @@
 
       <p>Beyond that, each app keeps a small amount of data so it can work: an account or
       installation record, a usage counter, and anything you write to us through the feedback
-      form. Review Diary additionally offers an encrypted backup and shows ads; endiary does
-      neither. All of it is set out below.</p>
+      form. Both apps show ads; Review Diary additionally offers an encrypted backup, which
+      endiary has no equivalent of. All of it is set out below.</p>
 
       <h2 id="what-goes-to-the-ai">What goes to the AI, and what does not</h2>
 
@@ -407,18 +407,31 @@
         cannot rule that out, so we would rather say it than let you assume otherwise.</p>
       </div>
 
-      <h2 id="advertising">Advertising — Review Diary only</h2>
+      <h2 id="advertising">Advertising</h2>
 
-      <p>The free version of <strong>Review Diary</strong> shows <strong>banner ads</strong>
-      provided by <strong>Google AdMob</strong> (Google LLC). Subscribing to premium removes
-      them. <strong>endiary shows no ads.</strong> It contains no ad code, requests
-      no ad, and shows you nothing.</p>
+      <p>Both apps show ads provided by <strong>Google AdMob</strong> (Google LLC), and both
+      therefore declare the <strong>advertising ID</strong> permission and let the ads SDK use
+      that identifier.</p>
 
-      <p>The Google Mobile Ads library is compiled into the endiary build, but the
-      advertising-ID permissions it would otherwise add —
-      <code>com.google.android.gms.permission.AD_ID</code> and the Android ad-services
-      permissions — are <strong>removed from the app's manifest</strong>, so the app does not
-      hold them. endiary collects no advertising identifier.</p>
+      <ul>
+        <li><strong>Review Diary</strong> — banner ads in the free version. Subscribing to
+        premium removes them.</li>
+        <li><strong>endiary</strong> — banner ads, plus <strong>rewarded ads</strong> you can
+        choose to watch to raise that day's review limit.</li>
+      </ul>
+
+      <h3>What reaches our server when you watch a rewarded ad</h3>
+
+      <p>Only a count. When you finish a rewarded ad, the app asks our function to raise your
+      limit, and what we record is the counter at
+      <code>users/{uid}/system/usage</code> — the date, how many reviews you have used, how
+      many bonus ones you were granted, and how many times that has happened.
+      <strong>Which ad you watched, the advertising ID, and anything about the advertiser do
+      not reach our server.</strong> We do not use Google's server-side verification, so
+      Google sends us nothing directly about your ad either. The advertising ID is handled by
+      Google's ads SDK on your device; our server never sees the value.</p>
+
+      <h3>Ads and what you write</h3>
 
       <p>In Review Diary the ads and your diary are kept apart, and we want to be specific
       about what that means rather than leaving it to be inferred:</p>
@@ -434,7 +447,11 @@
         derived from one, is sent to an ad network.</li>
       </ul>
 
-      <p>What Google may use to choose an ad is its own signals, not ours: the device's
+      <p>That last point holds for endiary too: nothing you wrote, and nothing derived from
+      it, goes to an ad network there either.</p>
+
+      <p>In both apps, what Google may use to choose an ad is its own signals, not ours:
+      the device's
       <strong>advertising ID</strong>, approximate location derived from your IP address,
       and coarse device information such as model, OS version, and language. That is
       Google's processing, governed by the
@@ -478,8 +495,8 @@
         entries and for Review Diary's encrypted backup; and, in Review Diary only, Firebase
         Crashlytics and Firebase Analytics.
         <a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
-        <li><strong>Google AdMob</strong> — serves the banner ads in Review Diary's free
-        version. It receives the advertising signals described under
+        <li><strong>Google AdMob</strong> — serves the ads in both apps. It receives the
+        advertising signals described under
         <a href="#advertising">Advertising</a>, and no diary content.
         <a href="https://policies.google.com/technologies/partner-sites">How Google uses
         information from sites or apps that use our services</a></li>
@@ -552,6 +569,9 @@
         <li>In Review Diary, turn crash reports or usage analytics off, individually, under
         <strong>⋮ &gt; Privacy</strong> in the app. Both start on, your choice is remembered,
         and turning either off takes nothing away.</li>
+        <li>Rewarded ads in endiary are never forced. They are there if you want more
+        reviews in a day than the free limit allows; skip them and nothing changes except
+        the limit.</li>
         <li>Subscribe to Review Diary premium and the ads go away. In the EEA, the UK, and
         Switzerland you can also reopen Google's consent form from inside the app and change
         your advertising choices at any time.</li>
