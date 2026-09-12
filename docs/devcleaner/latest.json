@@ -1,0 +1,10 @@
+{
+  "version": "0.1.10",
+  "dmg": "https://github.com/ssk-play/apps.sskplay.com/releases/download/devcleaner-v0.1.10/DevCleaner_0.1.10_aarch64.dmg",
+  "size": 6790292,
+  "sizeLabel": "6.5 MB",
+  "sha256": "e8826b50654a1e1c6ebaec96b3b0e3ab3d52a4d7e980d482ef6cbb695a825505",
+  "arch": "aarch64",
+  "minimumSystemVersion": "10.15",
+  "updated": "2026-09-12"
+}
