@@ -1,10 +1,10 @@
 {
-  "version": "0.1.10",
-  "dmg": "https://github.com/ssk-play/apps.sskplay.com/releases/download/devcleaner-v0.1.10/DevCleaner_0.1.10_aarch64.dmg",
-  "url": "https://github.com/ssk-play/apps.sskplay.com/releases/download/devcleaner-v0.1.10/DevCleaner_0.1.10_aarch64.dmg",
-  "size": 6790292,
+  "version": "0.1.11",
+  "dmg": "https://github.com/ssk-play/apps.sskplay.com/releases/download/devcleaner-v0.1.11/DevCleaner_0.1.11_aarch64.dmg",
+  "url": "https://github.com/ssk-play/apps.sskplay.com/releases/download/devcleaner-v0.1.11/DevCleaner_0.1.11_aarch64.dmg",
+  "size": 6785755,
   "sizeLabel": "6.5 MB",
-  "sha256": "e8826b50654a1e1c6ebaec96b3b0e3ab3d52a4d7e980d482ef6cbb695a825505",
+  "sha256": "67f49e1ef7d2ad833e9fc7bf9b2b5bb3a8d6fabf9f0babeaaeef6df3359869a5",
   "minimumSystemVersion": "10.15",
   "updated": "2026-09-12"
 }
