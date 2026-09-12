@@ -161,19 +161,6 @@
         display: block;
       }
 
-      .shot-placeholder {
-        border: 1px dashed var(--line);
-        border-radius: 14px;
-        background: var(--card);
-        color: var(--muted);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 3rem 1.25rem;
-        font-size: .9rem;
-      }
-
       .install-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -360,12 +347,14 @@
 
       <section>
         <h2>Screenshots</h2>
-        <!-- TODO: the screenshots in the dev_cleaner repo (screenshots/*.png) predate 0.1.10 —
-             they show the old scan-results UI without the explanation text or badges, and are
-             from a Korean-locale build. The app has no i18n — Korean is the only UI — so the
-             replacement captures will be Korean too; that is correct, not a mistake. Replace
-             this placeholder with the .shots grid once current captures exist. -->
-        <div class="shot-placeholder">Screenshots coming soon.</div>
+        <!-- The app has no i18n — Korean is its only UI — so Korean captures are correct,
+             not a localisation gap. Captures are 1100×750 windows at 2x, downscaled to 1600px. -->
+        <div class="shots">
+          <img src="assets/screenshot_1.webp" alt="Dashboard: disk usage bar, 10 workspaces and 22 development tools detected" loading="lazy" width="1600" height="1091" />
+          <img src="assets/screenshot_2.webp" alt="Development-tools scan results: 523.6 GB found, listed per tool" loading="lazy" width="1600" height="1091" />
+          <img src="assets/screenshot_3.webp" alt="Xcode card expanded: each item explains why it is safe to remove, with a badge for what happens afterwards" loading="lazy" width="1600" height="1091" />
+          <img src="assets/screenshot_4.webp" alt="Android emulator card: items marked as not recoverable, with the extra confirmation step before permanent deletion" loading="lazy" width="1600" height="1091" />
+        </div>
       </section>
 
       <section id="download">
